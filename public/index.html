@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f7f6f2">
+  <meta name="description" content="从四个核心概念出发，理解可追溯的 post-training 数据模型。探索字段树、复杂案例与设计约束。">
+  <title>Schema Atlas — 从数据到证据</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+  <script type="module" src="/app.mjs"></script>
+</head>
+<body>
+  <a class="skip" href="#main">跳到主要内容</a>
+  <header class="header">
+    <a class="brand" href="#top" aria-label="Schema Atlas 首页"><span class="brand-mark" aria-hidden="true">▦</span><span>SCHEMA<span class="brand-light"> ATLAS</span></span><span class="version">v3</span></a>
+    <nav aria-label="章节导航">
+      <a href="#model">01 概念</a><a href="#schema">02 结构</a><a href="#case">03 案例</a><a href="#proof">04 检验</a><a href="#adopt">05 决策</a>
+    </nav>
+    <a class="header-link" href="/docs/schema-v3.md" download>完整规范 <span aria-hidden="true">↗</span></a>
+  </header>
+
+  <main id="main">
+    <section class="hero wrap" id="top">
+      <div class="hero-text">
+        <div class="eyebrow"><span class="small-dot"></span> POST-TRAINING DATA · A SYSTEM OF EVIDENCE</div>
+        <h1>让每一条数据，<br>都有<span class="underline">来处</span>。</h1>
+        <p class="hero-description">从一道题，到一次运行，再到一个可复核的数据集。<br class="desktop">用四种稳定的对象，管理不断变化的内容、过程与判断。</p>
+        <div class="hero-actions"><a class="button primary" href="#model">从上往下理解 <span aria-hidden="true">↓</span></a><a class="button text-button" href="#case">直接看复杂案例 <span aria-hidden="true">↗</span></a></div>
+        <div class="hero-note">设计提案 v3 <span>·</span> 案例为合成演示 <span>·</span> 可交互探索</div>
+      </div>
+      <div class="hero-visual" aria-label="同一道题的内容、过程、判断和集合四层结构">
+        <div class="visual-label"><span>ONE QUESTION. FOUR PERSPECTIVES.</span><span>↙</span></div>
+        <div class="hero-stack">
+          <a class="stack-card asset" href="#model" data-concept="asset"><span class="stack-number">01</span><div><small>ASSET · 内容</small><strong>题目 / 答案 / 环境</strong><code>task/material-017@v2</code></div><span class="stack-symbol">◇</span></a>
+          <a class="stack-card activity" href="#model" data-concept="activity"><span class="stack-number">02</span><div><small>ACTIVITY · 过程</small><strong>谁，在何时，做了什么</strong><code>review/round-2@done</code></div><span class="stack-symbol">↗</span></a>
+          <a class="stack-card assessment" href="#model" data-concept="assessment"><span class="stack-number">03</span><div><small>ASSESSMENT · 判断</small><strong>依据与结论，分别留存</strong><code>answer_correctness: true</code></div><span class="stack-symbol">◎</span></a>
+          <a class="stack-card collection" href="#model" data-concept="collection"><span class="stack-number">04</span><div><small>COLLECTION · 集合</small><strong>冻结这一刻的选择</strong><code>science-eval@release-2</code></div><span class="stack-symbol">▦</span></a>
+        </div>
+        <div class="visual-caption"><span class="tiny-rule"></span>内容可修订，历史可追溯。</div>
+      </div>
+    </section>
+
+    <div class="thesis-strip"><div class="wrap thesis-inner"><span class="mono">THE DESIGN QUESTION</span><p>当答案变了、审核冲突了、评测器修复了，<strong>你还能解释过去的结果吗？</strong></p><span aria-hidden="true">↘</span></div></div>
+
+    <section class="section wrap" id="model">
+      <div class="section-heading"><div><div class="eyebrow">01 / MENTAL MODEL</div><h2>四个问题。<br>四种对象。</h2></div><p>先把语义分清楚。每一种对象只回答一个问题，<br class="desktop">再通过精确的版本引用连接起来。</p></div>
+      <div class="concept-grid" role="group" aria-label="选择核心概念">
+        <button class="concept-card asset active" data-concept="asset" aria-pressed="true"><span class="concept-top"><span class="mono">01 / ASSET</span><span>◇</span></span><h3>是什么？</h3><p>内容与定义</p><span class="concept-example">题目、答案、环境、轨迹</span><span class="concept-open">展开理解 ↗</span></button>
+        <button class="concept-card activity" data-concept="activity" aria-pressed="false"><span class="concept-top"><span class="mono">02 / ACTIVITY</span><span>↗</span></span><h3>怎么来的？</h3><p>产生与处理的过程</p><span class="concept-example">构造、审核、运行、导出</span><span class="concept-open">展开理解 ↗</span></button>
+        <button class="concept-card assessment" data-concept="assessment" aria-pressed="false"><span class="concept-top"><span class="mono">03 / ASSESSMENT</span><span>◎</span></span><h3>如何判断？</h3><p>有依据的结论</p><span class="concept-example">正确性、偏好、分数、审核意见</span><span class="concept-open">展开理解 ↗</span></button>
+        <button class="concept-card collection" data-concept="collection" aria-pressed="false"><span class="concept-top"><span class="mono">04 / COLLECTION</span><span>▦</span></span><h3>选了哪些？</h3><p>固定版本的集合</p><span class="concept-example">train / eval、成员、权重</span><span class="concept-open">展开理解 ↗</span></button>
+      </div>
+      <div class="concept-detail" id="concept-detail" aria-live="polite"></div>
+      <div class="relation-line"><span>内容 <b>Asset</b></span><i>经由 →</i><span>过程 <b>Activity</b></span><i>产生 →</i><span>内容或判断 <b>Asset / Assessment</b></span><i>选入 →</i><span>集合 <b>Collection</b></span></div>
+      <p class="footnote">内部用树组织，跨对象用引用连接。同一轨迹可以被多次评分，同一环境可以被多个任务复用。</p>
+    </section>
+
+    <section class="schema-section section" id="schema"><div class="wrap">
+      <div class="section-heading"><div><div class="eyebrow">02 / STRUCTURE</div><h2>一棵清楚的树，<br>一套明确的约束。</h2></div><p>点击字段查看含义、类型和必选条件。<br class="desktop">共同规则保持稳定，具体场景通过 profile 收紧。</p></div>
+      <div class="explorer">
+        <div class="explorer-top"><div class="tab-row" id="schema-tabs" role="group" aria-label="对象类型"></div><a class="small-link" href="/docs/schema-v3.md" download>下载完整契约 ↗</a></div>
+        <div class="explorer-toolbar"><label class="search"><span aria-hidden="true">⌕</span><input id="field-search" type="search" placeholder="查找字段，例如 reviewer、score、time" aria-label="搜索字段"></label><label class="filter"><span>显示</span><select id="required-filter"><option value="all">全部字段</option><option value="required">必选字段</option><option value="conditional">条件必选</option><option value="optional">可选字段</option></select></label></div>
+        <div class="explorer-body"><div class="field-tree" id="field-tree" aria-label="字段树"></div><aside class="field-inspector" id="field-inspector" aria-live="polite"></aside></div>
+        <div class="explorer-bottom"><span><b class="req-dot required"></b>必选</span><span><b class="req-dot conditional"></b>条件必选</span><span><b class="req-dot optional"></b>可选</span><span class="schema-counter" id="schema-counter"></span></div>
+      </div>
+      <div class="profile-block"><div><div class="eyebrow">SAME CORE, DIFFERENT PROFILES</div><h3>简单的题，不承担多余的字段。</h3><p>不是每条数据都要有环境、标准答案和轨迹。<br>profile 定义“在这个场景下，还需要什么”。</p></div><div class="profile-explorer"><div class="chip-row" id="profile-tabs" role="group" aria-label="选择数据场景"></div><div id="profile-detail" aria-live="polite"></div></div></div>
+      <div class="coverage-block"><div class="eyebrow">BENCHMARKS ENTER THROUGH PROFILES</div><h3>同一个主干，保留不同任务的细节。</h3><p class="coverage-intro">下表是适配设计，尚未实现真实数据导入。原格式保留，统一模型提供共同的版本、来源和判断语义。</p><div class="coverage-grid">
+        <article><span class="mono">01 / HLE</span><h4>多模态专家题</h4><p>question / image → input；answer / rationale → references；学科、answer_type 与 canary 进入明确的 profile 字段。公开作者署名作为来源事实保留。</p><p class="coverage-boundary">公开列无法恢复逐题审核员与审核时间；导入活动不冒充原始构造史。</p><a href="https://huggingface.co/datasets/cais/hle/blob/main/README.md" target="_blank" rel="noreferrer">HLE 官方字段 ↗</a></article>
+        <article><span class="mono">02 / TERMINAL-BENCH</span><h4>可执行终端任务</h4><p>instruction → input；solution → references；environment → Environment；tests → Evaluator；一次 attempt → rollout Activity。</p><p class="coverage-boundary">环境、依赖、评测器与运行参数分别固定版本，执行日志形成独立产物。</p><a href="https://docs.harborframework.com/core-concepts/tasks/overview" target="_blank" rel="noreferrer">Harbor 任务格式 ↗</a></article>
+        <article><span class="mono">03 / TERMINAL-BENCH-SCIENCE</span><h4>科学工作流与专家审核</h4><p>复用终端任务 profile；科学输入与交付物保留其文件格式，领域审核和技术审核分别记录活动与判断。</p><p class="coverage-boundary">多轮修订、固定发布和重评分，通过既有关系表达；下方案例展示这种复杂度。</p><a href="https://github.com/harbor-framework/terminal-bench-science" target="_blank" rel="noreferrer">官方项目与审核流程 ↗</a></article>
+        <article><span class="mono">04 / AA BENCH · ALE</span><h4>先确认数据粒度</h4><p>有逐题数据：接入相应 task profile。有交互环境：接入 environment / rollout。只有外部总分：保存报告与“来源报告值”判断。</p><p class="coverage-boundary">这两个缩写的准确项目和版本仍待确认。成员未知时，不创建声称完整的集合。</p><span class="coverage-note">明确支持边界，避免同名误配。</span></article>
+      </div></div>
+    </div></section>
+
+    <section class="section wrap" id="case">
+      <div class="section-heading"><div><div class="eyebrow">03 / THE COMPLEX CASE</div><h2>把复杂性推到极端。</h2></div><div><span class="badge">合成案例 · 非真实 benchmark 记录</span><p>一次材料科学任务，从多人构造到冲突裁决，<br class="desktop">再经历运行故障、重评分、发布与训练隔离。</p></div></div>
+      <div class="case-intro"><div><span class="mono">CASE / MATERIAL-017</span><h3 id="case-title">正在加载案例</h3><p id="case-description"></p></div><div class="case-factors"><span>多模态输入</span><span>字段级责任</span><span>冲突审核</span><span>隐藏测试</span><span>历史重评分</span><span>训练隔离</span></div></div>
+      <div class="case-workbench">
+        <div class="stage-toolbar"><div><span class="mono" id="stage-count">01 / 12</span><span id="stage-eyebrow"></span></div><div class="stage-controls"><button id="stage-prev" class="icon-button" aria-label="上一阶段">←</button><button id="stage-next" class="icon-button" aria-label="下一阶段">→</button></div></div>
+        <div class="stage-progress"><div id="stage-progress-fill"></div></div>
+        <div class="stage-steps" id="stage-steps" role="group" aria-label="案例阶段"></div>
+        <div class="stage-content"><div class="stage-story"><h3 id="stage-title"></h3><p id="stage-summary"></p><div id="stage-participants" class="participants"></div><ul id="stage-facts"></ul></div><div class="stage-objects" id="stage-objects" aria-live="polite"></div></div>
+        <div class="graph-header"><span class="mono">TRACE THE EVIDENCE</span><span>点选节点，查看对应记录 ↗</span></div>
+        <div class="graph-wrap" id="case-graph"></div>
+        <details class="record-details"><summary>查看本阶段的结构化记录 <span class="mono">JSON ↗</span></summary><p class="footnote">为讲解而精简的示例记录；完整字段契约见规范。</p><pre id="stage-json"></pre></details>
+      </div>
+      <div class="audit-questions"><div><div class="eyebrow">ASK THE DATA</div><h3>面对质疑，<br>沿着证据回答。</h3><p>判断一个 schema 好不好，<br>看它能否回答困难的问题。</p></div><div id="audit-questions"></div></div>
+    </section>
+
+    <section class="proof-section section" id="proof"><div class="wrap">
+      <div class="section-heading"><div><div class="eyebrow">04 / DESIGN UNDER PRESSURE</div><h2>主动打破它，<br>观察哪里需要改变。</h2></div><p>选择一个变化，查看受影响的对象。<br class="desktop">这些是设计规则演示，不代表真实评测执行。</p></div>
+      <div class="stress-lab"><div class="stress-options" id="stress-options" role="group" aria-label="选择反例"></div><div id="stress-detail" class="stress-detail" aria-live="polite"></div></div>
+      <div class="invariant-heading"><h3>稳定的规则，让复杂度有边界。</h3><span class="mono">DESIGN INVARIANTS</span></div>
+      <div id="invariant-grid" class="invariant-grid"></div>
+    </div></section>
+
+    <section class="section wrap" id="adopt">
+      <div class="section-heading"><div><div class="eyebrow">05 / THE DECISION</div><h2>值得采用，<br>也值得被检验。</h2></div><p>四个主干减少重复机制。是否适合你的团队，<br class="desktop">最终由真实数据、查询成本与导出一致性决定。</p></div>
+      <div class="comparison-wrap"><table class="comparison"><caption class="sr-only">三个数据模型方案的能力与代价比较</caption><thead><tr><th>决策维度</th><th>A / 单条宽表</th><th>B / 全部实体化</th><th class="recommended">C / 内容树 + 过程记录<span>推荐方案</span></th></tr></thead><tbody>
+        <tr><th>简单 QA 的阅读成本</th><td>低，一行可读</td><td>高，需要组合多个对象</td><td class="recommended">低，题目内容保持内嵌</td></tr>
+        <tr><th>多轮审核与冲突</th><td>加列或另存嵌套历史</td><td>可表达，但类型繁多</td><td class="recommended">复用 Activity + Assessment</td></tr>
+        <tr><th>历史重评分</th><td>容易覆盖旧分数</td><td>独立评分实体</td><td class="recommended">同一输出，多条版本化判断</td></tr>
+        <tr><th>新增任务类型</th><td>扩展列、空值增加</td><td>新增实体与关联</td><td class="recommended">扩展内容 profile 和方法</td></tr>
+        <tr><th>主要代价</th><td>历史与关系需要补机制</td><td>实体维护、联表与学习成本</td><td class="recommended">维护 profile、引用和采用规则</td></tr>
+      </tbody></table></div>
+      <p class="footnote">以上为架构取舍，不是吞吐、成本或准确率的实测排名。宽表仍然适合作为消费端导出格式。</p>
+      <div class="decision-grid"><div class="decision-card"><span class="eyebrow">THE CASE FOR ADOPTION</span><h3>复杂场景复用机制，<br>简单场景保持简单。</h3><p>不再为“二审、三审、重评分”分别发明新结构。相同的身份、引用、过程和判断机制，可跨题型复用。</p><ul><li>默认内容内嵌，避免无谓拆分。</li><li>每次判断都绑定明确对象和版本。</li><li>训练与评测共享来源，各自拥有发布规则。</li></ul></div><div class="decision-card honest"><span class="eyebrow">THE HONEST LIMIT</span><h3>结构能容纳证据，<br>质量仍需验证。</h3><p>有 hash 不代表来源可信；有人审核不代表答案正确；固定镜像不代表外部服务可复现。</p><ul><li>缺失的历史无法由 schema 恢复。</li><li>隐私、权限与冻结规则需要服务端落实。</li><li>大规模查询、真实适配器仍需实测。</li></ul></div></div>
+      <div class="pilot"><div><span class="eyebrow">A FALSIFIABLE PILOT</span><h3>用一个小试点，换一个可靠决策。</h3><p>建议先接入 30 道 QA、10 个终端任务和 20 对偏好样本。数量仅为试点建议。</p></div><ol><li><b>往返不丢信息</b><span>原格式 → 统一模型 → 目标导出，核对字段与引用。</span></li><li><b>历史能解释</b><span>选一条修订链，还原参与人、证据和发布版本。</span></li><li><b>代价能接受</b><span>实际测量导入耗时、存储放大和审计查询延迟，再决定扩大。</span></li></ol></div>
+      <div class="delivery"><div><h3>把方案带进下一次评审。</h3><p>字段契约、合成案例和决策摘要，均可下载。</p></div><div class="delivery-links"><a class="button primary" href="/docs/decision-memo.md" download>决策摘要 ↓</a><a class="button secondary" href="/docs/schema-v3.md" download>完整规范 ↓</a><a class="button secondary" id="download-case" href="/docs/synthetic-case.json" download="schema-atlas-synthetic-case.json">案例数据 ↓</a></div></div>
+    </section>
+  </main>
+  <footer class="footer wrap"><a class="brand" href="#top">SCHEMA ATLAS <span class="version">v3</span></a><p>内容 · 过程 · 判断 · 集合</p><span>交互式设计说明 / 合成数据 / 2026</span></footer>
+  <dialog id="record-dialog" class="record-dialog"><div class="dialog-head"><div><span id="dialog-kind" class="eyebrow"></span><h3 id="dialog-title"></h3></div><button class="icon-button" id="close-dialog" aria-label="关闭记录">×</button></div><p id="dialog-description"></p><pre id="dialog-json"></pre><div class="dialog-footer"><span>合成案例 · 简化记录</span><button id="copy-record" class="button secondary">复制记录</button></div></dialog>
+  <div class="toast" id="toast" role="status"></div>
+  <noscript><div class="noscript">本页的字段树和案例导航需要 JavaScript。你仍可以<a href="/docs/schema-v3.md">下载完整文字规范</a>。</div></noscript>
+</body>
+</html>

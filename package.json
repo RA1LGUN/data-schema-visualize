@@ -1,0 +1,13 @@
+{
+  "name": "post-train-schema-atlas",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Interactive post-training schema atlas with a dependency-free static server.",
+  "engines": { "node": ">=24" },
+  "scripts": {
+    "build": "node scripts/export-case.mjs",
+    "start": "node server.mjs",
+    "test": "node --test tests/*.test.mjs"
+  }
+}

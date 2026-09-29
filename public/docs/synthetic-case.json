@@ -1,0 +1,6080 @@
+{
+  "title": "一题，跨越构造、冲突、失败、修复与两种训练格式",
+  "subtitle": "材料科学 × 多模态 × 终端 Agent｜12 个阶段的合成压力案例",
+  "description": "全部人物、数据、时间、分数与执行结果均为虚构。它验证概念能否清楚表达复杂事实，不代表运行过真实实验、模型或容器。JSON 为简化展示记录，不是完整 v3 schema 的可执行样本。",
+  "stages": [
+    {
+      "id": "sources",
+      "title": "三种来源，一次可追溯导入",
+      "eyebrow": "01 / INPUT",
+      "summary": "图像、计数表、方法说明分别保留原始身份；不能只留下拼接后的 prompt。",
+      "activity": "import：记录导入者与录入时间",
+      "asset": "3 个 source Artifact",
+      "assessment": "尚无正确性判断",
+      "collection": "尚未发布",
+      "participants": [
+        {
+          "name": "流程服务",
+          "role": "importer"
+        }
+      ],
+      "facts": [
+        "原始来源定位到具体模态和文件。",
+        "导入时间不冒充实验构造时间。",
+        "展示文件均为占位，不伪造实际 hash。"
+      ],
+      "links": [
+        {
+          "from": "import",
+          "to": "source-spectrum",
+          "label": "导入"
+        },
+        {
+          "from": "import",
+          "to": "source-data",
+          "label": "导入"
+        },
+        {
+          "from": "import",
+          "to": "source-method",
+          "label": "导入"
+        }
+      ],
+      "record": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "artifact/counts",
+        "revision": "v1",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "kind": "artifact",
+        "produced_by": {
+          "id": "activity/import",
+          "revision": "done"
+        },
+        "access": {
+          "visibility": "internal"
+        },
+        "data": {
+          "media_type": "text/csv",
+          "storage": {
+            "uri": "demo://artifact/counts",
+            "availability": "unavailable"
+          },
+          "source": {
+            "uri": "https://example.invalid/synthetic-materials-case",
+            "revision": "demo-v1",
+            "locator": "source-data"
+          },
+          "note": "展示占位记录，没有对应可下载实验文件，也没有伪造文件 hash。"
+        }
+      }
+    },
+    {
+      "id": "author",
+      "title": "三位贡献者，字段级责任",
+      "eyebrow": "02 / CONSTRUCT",
+      "summary": "领域作者写题干，数值标注员写答案，专家写解析；Task 保持一个可读的内容树。",
+      "activity": "author + FieldMapping",
+      "asset": "task@v1",
+      "assessment": "尚未审核",
+      "collection": "尚未发布",
+      "participants": [
+        {
+          "name": "林",
+          "role": "题干作者"
+        },
+        {
+          "name": "周",
+          "role": "答案标注员"
+        },
+        {
+          "name": "陈",
+          "role": "解析专家"
+        }
+      ],
+      "facts": [
+        "每个产物路径连接输入片段与实际责任人。",
+        "不用把题干、答案、解析强制拆成三张表。",
+        "参考答案值本身不是正确性证明。"
+      ],
+      "links": [
+        {
+          "from": "source-data",
+          "to": "author",
+          "label": "数值来源"
+        },
+        {
+          "from": "source-method",
+          "to": "author",
+          "label": "方法来源"
+        },
+        {
+          "from": "author",
+          "to": "task-v1",
+          "label": "构造"
+        }
+      ],
+      "record": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "activity/author",
+        "revision": "done",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "kind": "author",
+        "state": "completed",
+        "inputs": [
+          {
+            "role": "source",
+            "target": {
+              "ref": {
+                "id": "artifact/spectrum",
+                "revision": "v1"
+              }
+            }
+          },
+          {
+            "role": "source",
+            "target": {
+              "ref": {
+                "id": "artifact/counts",
+                "revision": "v1"
+              }
+            }
+          },
+          {
+            "role": "source",
+            "target": {
+              "ref": {
+                "id": "artifact/method-note",
+                "revision": "v1"
+              }
+            }
+          }
+        ],
+        "participants": [
+          {
+            "actor": {
+              "id": "actor/author",
+              "revision": "v1"
+            },
+            "role": "author"
+          },
+          {
+            "actor": {
+              "id": "actor/annotator",
+              "revision": "v1"
+            },
+            "role": "annotator"
+          },
+          {
+            "actor": {
+              "id": "actor/expert",
+              "revision": "v1"
+            },
+            "role": "rationale_author"
+          }
+        ],
+        "time": {
+          "started_at": "2026-08-20T09:04:00.000Z",
+          "finished_at": "2026-08-20T09:05:00.000Z"
+        },
+        "method": {
+          "procedure": {
+            "id": "procedure/annotation",
+            "revision": "v1"
+          },
+          "config": {}
+        },
+        "workflow": {
+          "run_id": "production-017",
+          "stage": "author",
+          "round": 1
+        },
+        "mappings": [
+          {
+            "output": {
+              "ref": {
+                "id": "task/material-017",
+                "revision": "v1"
+              },
+              "path": "/data/input"
+            },
+            "inputs": [
+              {
+                "ref": {
+                  "id": "artifact/spectrum",
+                  "revision": "v1"
+                }
+              },
+              {
+                "ref": {
+                  "id": "artifact/method-note",
+                  "revision": "v1"
+                }
+              }
+            ],
+            "contributors": [
+              {
+                "actor": {
+                  "id": "actor/author",
+                  "revision": "v1"
+                },
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "output": {
+              "ref": {
+                "id": "task/material-017",
+                "revision": "v1"
+              },
+              "path": "/data/references/0/value"
+            },
+            "inputs": [
+              {
+                "ref": {
+                  "id": "artifact/counts",
+                  "revision": "v1"
+                }
+              }
+            ],
+            "contributors": [
+              {
+                "actor": {
+                  "id": "actor/annotator",
+                  "revision": "v1"
+                },
+                "role": "annotator"
+              }
+            ]
+          },
+          {
+            "output": {
+              "ref": {
+                "id": "task/material-017",
+                "revision": "v1"
+              },
+              "path": "/data/references/1/value"
+            },
+            "inputs": [
+              {
+                "ref": {
+                  "id": "artifact/method-note",
+                  "revision": "v1"
+                }
+              }
+            ],
+            "contributors": [
+              {
+                "actor": {
+                  "id": "actor/expert",
+                  "revision": "v1"
+                },
+                "role": "rationale_author"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "review-1",
+      "title": "第 1 轮：两种意见发生冲突",
+      "eyebrow": "03 / DISAGREE",
+      "summary": "领域审核认为误差模型不充分；计算审核认为脚本可运行。两项判断同时保留。",
+      "activity": "两次独立 review",
+      "asset": "仍为 task@v1",
+      "assessment": "revise + accept 并存",
+      "collection": "尚未发布",
+      "participants": [
+        {
+          "name": "沈",
+          "role": "领域审核员"
+        },
+        {
+          "name": "顾",
+          "role": "计算审核员"
+        }
+      ],
+      "facts": [
+        "每条意见绑定自己的作者、时间、准则与精确输入。",
+        "不能用最后写入的 accept 覆盖 revise。",
+        "程序可执行不等于题目无歧义。"
+      ],
+      "links": [
+        {
+          "from": "task-v1",
+          "to": "review-1a",
+          "label": "审核输入"
+        },
+        {
+          "from": "task-v1",
+          "to": "review-1b",
+          "label": "审核输入"
+        },
+        {
+          "from": "review-1a",
+          "to": "judgment-1a",
+          "label": "要求修改"
+        },
+        {
+          "from": "review-1b",
+          "to": "judgment-1b",
+          "label": "同意"
+        }
+      ],
+      "record": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "assessment/review-1a",
+        "revision": "v1",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "subjects": [
+          {
+            "ref": {
+              "id": "task/material-017",
+              "revision": "v1"
+            },
+            "path": "/data/input"
+          }
+        ],
+        "criterion": {
+          "evaluator": {
+            "id": "evaluator/review",
+            "revision": "v1"
+          },
+          "key": "review_decision"
+        },
+        "result": {
+          "status": "value",
+          "value": "revise"
+        },
+        "produced_by": {
+          "id": "activity/review-1a",
+          "revision": "done"
+        },
+        "evidence": [],
+        "rationale": {
+          "format": "text/plain",
+          "inline": "共享校准偏移不可当作逐点独立噪声；当前问题不能唯一约束区间算法。"
+        }
+      }
+    },
+    {
+      "id": "revise",
+      "title": "裁决生成 v2，v1 永久保留",
+      "eyebrow": "04 / REVISE",
+      "summary": "裁决要求明确共享校准偏移，并同步修订题干和解析。新版本重新进入审核。",
+      "activity": "adjudicate：读取两项冲突证据",
+      "asset": "task@v2，parents=[v1]",
+      "assessment": "v1 的最终结论：revise",
+      "collection": "尚未发布",
+      "participants": [
+        {
+          "name": "唐",
+          "role": "裁决专家"
+        },
+        {
+          "name": "林",
+          "role": "修订作者"
+        }
+      ],
+      "facts": [
+        "修订理由可追溯到冲突意见。",
+        "旧审核不自动变成 v2 的审核。",
+        "历史查询仍可完整复原 v1。"
+      ],
+      "links": [
+        {
+          "from": "judgment-1a",
+          "to": "adjudicate-1",
+          "label": "冲突意见"
+        },
+        {
+          "from": "judgment-1b",
+          "to": "adjudicate-1",
+          "label": "冲突意见"
+        },
+        {
+          "from": "adjudicate-1",
+          "to": "task-v2",
+          "label": "新快照"
+        }
+      ],
+      "record": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "task/material-017",
+        "revision": "v2",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "kind": "task",
+        "produced_by": {
+          "id": "activity/adjudicate-1",
+          "revision": "done"
+        },
+        "access": {
+          "visibility": "restricted",
+          "policy": {
+            "id": "policy/eval-only",
+            "revision": "v1"
+          }
+        },
+        "data": {
+          "profile": "https://schema.example.invalid/demo/materials-terminal-v1",
+          "input": {
+            "messages": [
+              {
+                "role": "user",
+                "content": {
+                  "format": "text/plain",
+                  "inline": "按给定的两相线性混合模型估计相比例；显式采用计数噪声与共享校准偏移，输出 phase_id 标识的比例、区间与假设。相的排列顺序不影响语义。"
+                }
+              }
+            ],
+            "files": [
+              {
+                "name": "/input/spectrum.png",
+                "artifact": {
+                  "id": "artifact/spectrum",
+                  "revision": "v1"
+                }
+              },
+              {
+                "name": "/input/counts.csv",
+                "artifact": {
+                  "id": "artifact/counts",
+                  "revision": "v1"
+                }
+              },
+              {
+                "name": "/input/method.txt",
+                "artifact": {
+                  "id": "artifact/method-note",
+                  "revision": "v1"
+                }
+              }
+            ]
+          },
+          "references": [
+            {
+              "key": "answer",
+              "role": "answer",
+              "audience": "evaluator",
+              "value": {
+                "format": "application/json",
+                "inline": {
+                  "phase_A": 0.63,
+                  "phase_B": 0.37,
+                  "illustrative_interval_A": [
+                    0.58,
+                    0.68
+                  ]
+                }
+              }
+            },
+            {
+              "key": "rationale",
+              "role": "rationale",
+              "audience": "curator",
+              "value": {
+                "format": "text/plain",
+                "inline": "说明校准偏移作为共享 nuisance variable 的处理及区间计算约定；这些数值仅用于示意。"
+              }
+            }
+          ],
+          "environment": {
+            "id": "environment/materials",
+            "revision": "v1"
+          },
+          "evaluation": {
+            "id": "evaluator/materials",
+            "revision": "v1"
+          },
+          "attributes": {
+            "domain": "materials-science",
+            "tags": [
+              "synthetic",
+              "multimodal",
+              "terminal",
+              "uncertainty"
+            ]
+          },
+          "lineage_key": "eval-materials-family-017"
+        },
+        "parents": [
+          {
+            "id": "task/material-017",
+            "revision": "v1"
+          }
+        ]
+      }
+    },
+    {
+      "id": "review-2",
+      "title": "第 2 轮：对判分边界再裁决",
+      "eyebrow": "05 / ADJUDICATE",
+      "summary": "领域审核接受新题干；统计审核质疑唯一算法要求。裁决明确允许等价算法，以声明的容差验收。",
+      "activity": "两次 review + 一次 adjudicate",
+      "asset": "task@v2 不被拼接或覆盖",
+      "assessment": "接受意见、修改意见、最终采用结论并存",
+      "collection": "形成发布证据",
+      "participants": [
+        {
+          "name": "沈",
+          "role": "领域审核员"
+        },
+        {
+          "name": "许",
+          "role": "统计审核员"
+        },
+        {
+          "name": "唐",
+          "role": "裁决专家"
+        }
+      ],
+      "facts": [
+        "判断保存不同层次的证据，不能只留 approved=true。",
+        "采用策略声明最终用了哪条结论。",
+        "审核通过也不保证 verifier 的实现无缺陷。"
+      ],
+      "links": [
+        {
+          "from": "task-v2",
+          "to": "review-2a",
+          "label": "再次审核"
+        },
+        {
+          "from": "task-v2",
+          "to": "review-2b",
+          "label": "再次审核"
+        },
+        {
+          "from": "judgment-2a",
+          "to": "adjudicate-2",
+          "label": "意见 A"
+        },
+        {
+          "from": "judgment-2b",
+          "to": "adjudicate-2",
+          "label": "意见 B"
+        },
+        {
+          "from": "adjudicate-2",
+          "to": "decision-2",
+          "label": "裁决"
+        }
+      ],
+      "record": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "assessment/decision-2",
+        "revision": "v1",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "subjects": [
+          {
+            "ref": {
+              "id": "task/material-017",
+              "revision": "v2"
+            }
+          }
+        ],
+        "criterion": {
+          "evaluator": {
+            "id": "evaluator/review",
+            "revision": "v1"
+          },
+          "key": "review_decision"
+        },
+        "result": {
+          "status": "value",
+          "value": "accept"
+        },
+        "produced_by": {
+          "id": "activity/adjudicate-2",
+          "revision": "done"
+        },
+        "evidence": [
+          {
+            "target": {
+              "ref": {
+                "id": "assessment/review-2a",
+                "revision": "v1"
+              }
+            }
+          },
+          {
+            "target": {
+              "ref": {
+                "id": "assessment/review-2b",
+                "revision": "v1"
+              }
+            }
+          }
+        ],
+        "rationale": {
+          "format": "text/plain",
+          "inline": "采用声明的解析基准与数值容差，允许等价算法；这是一项审核结论，不能保证 verifier 没有实现缺陷。"
+        }
+      }
+    },
+    {
+      "id": "freeze",
+      "title": "冻结评测发布与隐藏边界",
+      "eyebrow": "06 / FREEZE",
+      "summary": "发布固定题目、环境、verifier、执行协议与用途规则。Agent 只接收过滤后的输入投影。",
+      "activity": "release：审查证据与策略",
+      "asset": "环境 v1 + verifier v1 + task v2",
+      "assessment": "采用 decision-2",
+      "collection": "eval release r1",
+      "participants": [
+        {
+          "name": "流程服务",
+          "role": "publisher"
+        }
+      ],
+      "facts": [
+        "frozen 成员没有 latest 引用。",
+        "隐藏答案与 verifier 不挂载到 Agent 环境。",
+        "test split 不代表权限；禁止训练来自明确 policy。"
+      ],
+      "links": [
+        {
+          "from": "task-v2",
+          "to": "eval-release-1",
+          "label": "固定成员"
+        },
+        {
+          "from": "environment",
+          "to": "task-v2",
+          "label": "执行环境"
+        },
+        {
+          "from": "verifier-v1",
+          "to": "task-v2",
+          "label": "评测引用"
+        },
+        {
+          "from": "decision-2",
+          "to": "eval-release-1",
+          "label": "发布证据"
+        }
+      ],
+      "record": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "collection/materials-eval",
+        "revision": "r1",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "name": "Synthetic Materials Eval",
+        "purpose": "eval",
+        "members": [
+          {
+            "key": "M017",
+            "target": {
+              "id": "task/material-017",
+              "revision": "v2"
+            },
+            "split": "test"
+          }
+        ],
+        "produced_by": {
+          "id": "activity/release-1",
+          "revision": "done"
+        },
+        "protocol": {
+          "id": "procedure/execute",
+          "revision": "v1"
+        },
+        "policy": {
+          "id": "policy/eval-only",
+          "revision": "v1"
+        },
+        "release_evidence": [
+          {
+            "id": "assessment/decision-2",
+            "revision": "v1"
+          }
+        ]
+      }
+    },
+    {
+      "id": "attempts",
+      "title": "三个尝试：基础设施失败不是零分",
+      "eyebrow": "07 / EXECUTE",
+      "summary": "模型 A 的首次运行在输入前挂载失败；重试生成合法但相顺序反转的答案。模型 B 生成同值的另一排列。",
+      "activity": "a1 failed；a2 / b1 completed",
+      "asset": "两份 Response + 两份 Trajectory",
+      "assessment": "尚未判分",
+      "collection": "仍固定 eval r1",
+      "participants": [
+        {
+          "name": "流程服务",
+          "role": "runner"
+        },
+        {
+          "name": "虚构模型 A / B",
+          "role": "candidate"
+        }
+      ],
+      "facts": [
+        "重试是新 Activity，保留 retry_of。",
+        "失败尝试保留诊断，不虚构 response。",
+        "模型 revision 不可确认时标记 opaque。"
+      ],
+      "links": [
+        {
+          "from": "eval-release-1",
+          "to": "run-a1",
+          "label": "尝试"
+        },
+        {
+          "from": "run-a1",
+          "to": "run-a2",
+          "label": "retry_of"
+        },
+        {
+          "from": "run-a2",
+          "to": "response-a2",
+          "label": "产物"
+        },
+        {
+          "from": "eval-release-1",
+          "to": "run-b1",
+          "label": "尝试"
+        },
+        {
+          "from": "run-b1",
+          "to": "response-b1",
+          "label": "产物"
+        }
+      ],
+      "record": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "activity/run-a1",
+        "revision": "done",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "kind": "rollout",
+        "state": "failed",
+        "inputs": [
+          {
+            "role": "task",
+            "target": {
+              "ref": {
+                "id": "task/material-017",
+                "revision": "v2"
+              }
+            }
+          },
+          {
+            "role": "release",
+            "target": {
+              "ref": {
+                "id": "collection/materials-eval",
+                "revision": "r1"
+              }
+            }
+          }
+        ],
+        "participants": [
+          {
+            "actor": {
+              "id": "actor/service",
+              "revision": "v1"
+            },
+            "role": "runner"
+          }
+        ],
+        "time": {
+          "started_at": "2026-08-20T09:20:00.000Z",
+          "finished_at": "2026-08-20T09:21:00.000Z"
+        },
+        "method": {
+          "procedure": {
+            "id": "procedure/execute",
+            "revision": "v1"
+          },
+          "config": {
+            "temperature": 0.2,
+            "max_tool_steps": 80,
+            "seed": 17
+          },
+          "models": [
+            {
+              "role": "candidate",
+              "model": {
+                "id": "model/A",
+                "revision": "v1"
+              }
+            }
+          ],
+          "environments": [
+            {
+              "id": "environment/materials",
+              "revision": "v1"
+            }
+          ]
+        },
+        "diagnostics": {
+          "format": "application/json",
+          "inline": {
+            "category": "infra_error",
+            "reason": "容器磁盘挂载失败，模型尚未接收输入。"
+          }
+        }
+      }
+    },
+    {
+      "id": "score",
+      "title": "同一语义，却出现不同分数",
+      "eyebrow": "08 / SCORE",
+      "summary": "verifier v1 错把相的数组排列当语义，a2 被判未通过、b1 通过。a1 保留 unavailable。",
+      "activity": "各尝试独立 score",
+      "asset": "原始 Response 不改写",
+      "assessment": "a1 unavailable；a2 false；b1 true",
+      "collection": "报告必须声明有效分母与覆盖率",
+      "participants": [
+        {
+          "name": "流程服务",
+          "role": "evaluator"
+        }
+      ],
+      "facts": [
+        "completed 和 task_pass 是不同维度。",
+        "无法评分不是 value=0。",
+        "这里只是单题演示，不从 3 次尝试推断模型能力排名。"
+      ],
+      "links": [
+        {
+          "from": "response-a2",
+          "to": "score-a2-v1",
+          "label": "verifier v1"
+        },
+        {
+          "from": "response-b1",
+          "to": "score-b1-v1",
+          "label": "verifier v1"
+        },
+        {
+          "from": "run-a1",
+          "to": "score-a1-v1",
+          "label": "无法评分"
+        }
+      ],
+      "record": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "assessment/score-a1-v1",
+        "revision": "v1",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "subjects": [
+          {
+            "ref": {
+              "id": "activity/run-a1",
+              "revision": "done"
+            }
+          }
+        ],
+        "criterion": {
+          "evaluator": {
+            "id": "evaluator/materials",
+            "revision": "v1"
+          },
+          "key": "task_pass"
+        },
+        "result": {
+          "status": "unavailable",
+          "reason": "infra_error_before_model_input"
+        },
+        "produced_by": {
+          "id": "activity/score-a1-v1",
+          "revision": "done"
+        },
+        "evidence": []
+      }
+    },
+    {
+      "id": "rescore",
+      "title": "修复评测器，无需重跑模型",
+      "eyebrow": "09 / RE-SCORE",
+      "summary": "新 verifier 按 phase_id 对齐；重用原始输出得到 a2、b1 均通过。旧判断留存。",
+      "activity": "transform verifier + score",
+      "asset": "evaluator@v2；Response 字节不变",
+      "assessment": "新 Assessment 显式 supersedes 旧分数",
+      "collection": "旧发布内容保持可复原",
+      "participants": [
+        {
+          "name": "顾",
+          "role": "verifier maintainer"
+        },
+        {
+          "name": "流程服务",
+          "role": "evaluator"
+        }
+      ],
+      "facts": [
+        "重评分依赖完整原始响应与输入上下文。",
+        "仅改分数列会丢失当时评分方法。",
+        "verifier 回归样例在本案例中是设计记录，未声称执行。"
+      ],
+      "links": [
+        {
+          "from": "verifier-v1",
+          "to": "repair",
+          "label": "修复"
+        },
+        {
+          "from": "repair",
+          "to": "verifier-v2",
+          "label": "新版本"
+        },
+        {
+          "from": "response-a2",
+          "to": "rescore",
+          "label": "原响应"
+        },
+        {
+          "from": "verifier-v2",
+          "to": "rescore",
+          "label": "新判据"
+        },
+        {
+          "from": "rescore",
+          "to": "score-a2-v2",
+          "label": "新判断"
+        }
+      ],
+      "record": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "assessment/score-a2-v2",
+        "revision": "v1",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "subjects": [
+          {
+            "ref": {
+              "id": "response/a2",
+              "revision": "v1"
+            }
+          }
+        ],
+        "criterion": {
+          "evaluator": {
+            "id": "evaluator/materials",
+            "revision": "v2"
+          },
+          "key": "task_pass"
+        },
+        "result": {
+          "status": "value",
+          "value": true
+        },
+        "produced_by": {
+          "id": "activity/rescore",
+          "revision": "done"
+        },
+        "evidence": [
+          {
+            "target": {
+              "ref": {
+                "id": "response/a2",
+                "revision": "v1"
+              }
+            }
+          }
+        ],
+        "supersedes": [
+          {
+            "id": "assessment/score-a2-v1",
+            "revision": "v1"
+          }
+        ]
+      }
+    },
+    {
+      "id": "release-2",
+      "title": "新发布保留与旧发布的边界",
+      "eyebrow": "10 / VERSION",
+      "summary": "task v3 只更新 verifier 引用。明确审查输入等价后发布 r2；历史 rollout 的 context 仍是 task v2。",
+      "activity": "release + 输入等价审查",
+      "asset": "task@v3；parents=[v2]",
+      "assessment": "input_equivalence=true",
+      "collection": "r1 与 r2 同时可查询",
+      "participants": [
+        {
+          "name": "唐",
+          "role": "reviewer"
+        },
+        {
+          "name": "流程服务",
+          "role": "publisher"
+        }
+      ],
+      "facts": [
+        "不得把旧执行的 task_ref 偷换成 v3。",
+        "新报告标注 verifier v2 与历史输出复用规则。",
+        "如果题干、图像或初始状态改变，必须重新判断可复用性。"
+      ],
+      "links": [
+        {
+          "from": "task-v2",
+          "to": "task-v3",
+          "label": "只更新评测引用"
+        },
+        {
+          "from": "task-v3",
+          "to": "eval-release-2",
+          "label": "新冻结成员"
+        },
+        {
+          "from": "equivalence",
+          "to": "eval-release-2",
+          "label": "复用依据"
+        },
+        {
+          "from": "eval-release-1",
+          "to": "eval-release-2",
+          "label": "新发布版本"
+        }
+      ],
+      "record": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "assessment/input-equivalence",
+        "revision": "v1",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "subjects": [
+          {
+            "ref": {
+              "id": "task/material-017",
+              "revision": "v2"
+            }
+          },
+          {
+            "ref": {
+              "id": "task/material-017",
+              "revision": "v3"
+            }
+          }
+        ],
+        "criterion": {
+          "evaluator": {
+            "id": "evaluator/review",
+            "revision": "v1"
+          },
+          "key": "input_equivalence"
+        },
+        "result": {
+          "status": "value",
+          "value": true
+        },
+        "produced_by": {
+          "id": "activity/release-2",
+          "revision": "done"
+        },
+        "evidence": [],
+        "rationale": {
+          "format": "text/plain",
+          "inline": "示例中比对指定路径相等。历史 response.context 仍然是 v2；如题干或初始状态改变则不可使用此复用规则。"
+        }
+      }
+    },
+    {
+      "id": "isolation",
+      "title": "堵住污染路径，再生成训练 sibling",
+      "eyebrow": "11 / GOVERN",
+      "summary": "评测题及其轨迹被拒绝训练。另用独立来源与参数生成 T204，通过用途、近重复与暴露检查。",
+      "activity": "eligibility + generate + review",
+      "asset": "独立 task/train-204",
+      "assessment": "eval blocked；T204 allowed",
+      "collection": "评测与训练成员分离",
+      "participants": [
+        {
+          "name": "流程服务",
+          "role": "policy enforcer"
+        },
+        {
+          "name": "林",
+          "role": "author"
+        },
+        {
+          "name": "沈",
+          "role": "reviewer"
+        }
+      ],
+      "facts": [
+        "换 split、换名字、仅换 seed 都不足以解除污染。",
+        "独立来源族加上检测证据，才支持训练资格判断。",
+        "评测轨迹不能被直接转成训练样本。"
+      ],
+      "links": [
+        {
+          "from": "eval-release-2",
+          "to": "train-block",
+          "label": "禁止训练"
+        },
+        {
+          "from": "generate-train",
+          "to": "training-task",
+          "label": "独立构造"
+        },
+        {
+          "from": "training-task",
+          "to": "train-review",
+          "label": "隔离审查"
+        },
+        {
+          "from": "train-review",
+          "to": "train-allow",
+          "label": "允许导出"
+        }
+      ],
+      "record": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "assessment/train-block",
+        "revision": "v1",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "subjects": [
+          {
+            "ref": {
+              "id": "task/material-017",
+              "revision": "v3"
+            }
+          },
+          {
+            "ref": {
+              "id": "trajectory/a2",
+              "revision": "v1"
+            }
+          }
+        ],
+        "criterion": {
+          "evaluator": {
+            "id": "evaluator/policy",
+            "revision": "v1"
+          },
+          "key": "training_eligibility"
+        },
+        "result": {
+          "status": "value",
+          "value": "blocked"
+        },
+        "produced_by": {
+          "id": "activity/eligibility",
+          "revision": "done"
+        },
+        "evidence": [],
+        "rationale": {
+          "format": "text/plain",
+          "inline": "评测来源的用途规则禁止训练；改名、换 split、改写提示词均不能解除来源约束。"
+        }
+      }
+    },
+    {
+      "id": "export",
+      "title": "一份训练题，两种可追溯视图",
+      "eyebrow": "12 / PROJECT",
+      "summary": "T204 产生两个候选：分别记录正确性与偏好，再导出 SFT 和 DPO。原始信息仍然保留。",
+      "activity": "rollout → annotate → export",
+      "asset": "Response → training_example",
+      "assessment": "正确性与 preference 独立",
+      "collection": "train release r1",
+      "participants": [
+        {
+          "name": "陈",
+          "role": "annotator"
+        },
+        {
+          "name": "流程服务",
+          "role": "exporter"
+        }
+      ],
+      "facts": [
+        "DPO 两个候选共享 task/train-204@v1。",
+        "SFT 的目标和 loss-mask 来自版本化导出配方。",
+        "训练集合中不含任何 eval 族内容。"
+      ],
+      "links": [
+        {
+          "from": "training-task",
+          "to": "train-good",
+          "label": "共同上下文"
+        },
+        {
+          "from": "training-task",
+          "to": "train-bad",
+          "label": "共同上下文"
+        },
+        {
+          "from": "preference",
+          "to": "export",
+          "label": "选择依据"
+        },
+        {
+          "from": "export",
+          "to": "sft",
+          "label": "SFT 投影"
+        },
+        {
+          "from": "export",
+          "to": "dpo",
+          "label": "DPO 投影"
+        },
+        {
+          "from": "sft",
+          "to": "train-release",
+          "label": "冻结成员"
+        },
+        {
+          "from": "dpo",
+          "to": "train-release",
+          "label": "冻结成员"
+        }
+      ],
+      "record": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "training/dpo-204",
+        "revision": "v1",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "kind": "training_example",
+        "produced_by": {
+          "id": "activity/export",
+          "revision": "done"
+        },
+        "access": {
+          "visibility": "restricted",
+          "policy": {
+            "id": "policy/training",
+            "revision": "v1"
+          }
+        },
+        "data": {
+          "format": "https://schema.example.invalid/demo/dpo-v1",
+          "record": {
+            "format": "application/json",
+            "inline": {
+              "prompt": "T204 input",
+              "chosen": "0.28 / 0.72 + explanation",
+              "rejected": "0.28 / 0.82"
+            }
+          },
+          "sources": [
+            {
+              "ref": {
+                "id": "task/train-204",
+                "revision": "v1"
+              }
+            },
+            {
+              "ref": {
+                "id": "response/train-good",
+                "revision": "v1"
+              }
+            },
+            {
+              "ref": {
+                "id": "response/train-bad",
+                "revision": "v1"
+              }
+            }
+          ],
+          "selection_evidence": [
+            {
+              "id": "assessment/train-allow",
+              "revision": "v1"
+            },
+            {
+              "id": "assessment/preference",
+              "revision": "v1"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "stressTests": [
+    {
+      "id": "conflict",
+      "label": "审核员意见相反",
+      "trigger": "同一个 v1 同时得到 accept 与 revise。",
+      "before": "单个 approved 字段只能覆盖或含糊合并。",
+      "after": "保留两项独立判断；裁决引用两者并说明采用原因。",
+      "rule": "Assessment 是可争议主张，不是内容自身的属性。",
+      "affected": [
+        "Activity",
+        "Assessment"
+      ]
+    },
+    {
+      "id": "revision",
+      "label": "只改一个关键字段",
+      "trigger": "共享校准误差假设被补充。",
+      "before": "“最新题干 + 旧审核”可能形成从未审核过的组合。",
+      "after": "Task 产生新 revision；旧意见继续指向旧版本，新版重新审查。",
+      "rule": "引用精确快照；不默默继承审核。",
+      "affected": [
+        "Asset",
+        "Activity",
+        "Assessment"
+      ]
+    },
+    {
+      "id": "infra",
+      "label": "运行失败但模型没答错",
+      "trigger": "容器挂载失败发生在模型获得输入之前。",
+      "before": "直接写 score=0 会混淆平台可靠性与模型能力。",
+      "after": "Activity=failed；评分 unavailable；重试独立保留。",
+      "rule": "运行状态、任务正确性、覆盖率分别表达。",
+      "affected": [
+        "Activity",
+        "Assessment"
+      ]
+    },
+    {
+      "id": "judge",
+      "label": "评测器自身出错",
+      "trigger": "合法输出因 phase 数组排列被误拒。",
+      "before": "覆盖原 score 后无法解释历史榜单差异。",
+      "after": "verifier 新版本 + 新判断 + supersedes；复用原始响应。",
+      "rule": "评分是带判据版本的派生判断。",
+      "affected": [
+        "Asset",
+        "Activity",
+        "Assessment"
+      ]
+    },
+    {
+      "id": "freeze",
+      "label": "发布后修复一题",
+      "trigger": "Task 更新为 v3，只替换 evaluator 引用。",
+      "before": "latest 成员会让同一发布编号的内容漂移。",
+      "after": "新 Collection r2；r1 继续引用 task v2。",
+      "rule": "冻结集合固定成员版本与协议。",
+      "affected": [
+        "Asset",
+        "Collection"
+      ]
+    },
+    {
+      "id": "leakage",
+      "label": "把 test 改成 train",
+      "trigger": "希望把高分评测轨迹直接用于 SFT。",
+      "before": "只检查 split 会允许改名绕过。",
+      "after": "用途限制沿来源传播，导出拒绝；独立 sibling 须另审。",
+      "rule": "split 不是权限；lineage_key 不是无污染证明。",
+      "affected": [
+        "Asset",
+        "Assessment",
+        "Collection"
+      ]
+    },
+    {
+      "id": "preference",
+      "label": "偏好被误当真值",
+      "trigger": "候选 A 被选为 chosen。",
+      "before": "默认 chosen=correct 混淆两个不同判断。",
+      "after": "保存 preference 与 answer_correctness 两个 criterion。",
+      "rule": "不同评价目标不共享隐含语义。",
+      "affected": [
+        "Assessment"
+      ]
+    },
+    {
+      "id": "provenance",
+      "label": "多人合写同一道题",
+      "trigger": "题干、答案、解析分别由不同人员负责。",
+      "before": "authors=[甲,乙,丙] 不能定位各字段责任。",
+      "after": "一个 Task 内容树 + mappings 指向字段、来源与责任人。",
+      "rule": "按需要追踪字段，不强制把每个字段变成独立实体。",
+      "affected": [
+        "Asset",
+        "Activity"
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "question": "谁写了答案？依据是什么？",
+      "answer": "activity/author 的映射将 answer 字段连接到计数 CSV，贡献者是数值标注员周。题干与解析分别有不同责任人。",
+      "evidence": [
+        "author",
+        "source-data",
+        "task-v1"
+      ]
+    },
+    {
+      "question": "为什么题目最终被接纳？",
+      "answer": "发布 r1 采用第二轮裁决 decision-2。它引用两项冲突意见并声明等价算法的验收边界，未删除反对意见。",
+      "evidence": [
+        "judgment-2a",
+        "judgment-2b",
+        "decision-2",
+        "eval-release-1"
+      ]
+    },
+    {
+      "question": "模型 A 有三个结果吗？",
+      "answer": "A 只有两个尝试：a1 为基础设施失败，a2 产生一个响应。a2 的两项分数来自两个 verifier 版本，不是两次模型回答。",
+      "evidence": [
+        "run-a1",
+        "run-a2",
+        "response-a2",
+        "score-a2-v1",
+        "score-a2-v2"
+      ]
+    },
+    {
+      "question": "为什么不能直接比较修复前后的分数？",
+      "answer": "判分程序发生变化。比较必须显式固定或分别披露 evaluator revision、尝试选择规则与未评分处理，不能把同名指标当相同测量。",
+      "evidence": [
+        "verifier-v1",
+        "verifier-v2",
+        "score-a2-v1",
+        "score-a2-v2"
+      ]
+    },
+    {
+      "question": "新发布是否偷偷换了历史输入？",
+      "answer": "没有。历史 response 的 context 仍指向 task v2；新发布引用 v3，并单独保存输入等价审查。若内容变化，此复用结论不成立。",
+      "evidence": [
+        "response-a2",
+        "task-v3",
+        "equivalence",
+        "eval-release-2"
+      ]
+    },
+    {
+      "question": "训练题是不是评测题换了名字？",
+      "answer": "合成情境中，T204 来自独立生成活动与来源族，不引用评测内容；用途、近重复与暴露审查另行记录。只有换 seed 或 lineage_key 不足以作证。",
+      "evidence": [
+        "train-block",
+        "generate-train",
+        "training-task",
+        "train-allow"
+      ]
+    },
+    {
+      "question": "为什么四个主干足够表达这个案例？",
+      "answer": "复杂性来自四种关系的组合：内容版本、处理历史、独立判断与冻结成员。案例没有因增加审核轮次、模型或训练格式而增加第五种顶层职责。它仍需要强类型 profile 和关系约束。",
+      "evidence": [
+        "task-v2",
+        "author",
+        "decision-2",
+        "eval-release-1"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "id": "register",
+      "kind": "activity",
+      "title": "登记虚构参与者、规则与模型",
+      "revision": "done",
+      "description": "登记虚构参与者、规则与模型",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "activity/register",
+        "revision": "done",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "kind": "import",
+        "state": "completed",
+        "inputs": [],
+        "participants": [
+          {
+            "actor": {
+              "id": "actor/service",
+              "revision": "v1"
+            },
+            "role": "registrar"
+          }
+        ],
+        "time": {
+          "started_at": "2026-08-20T09:00:00.000Z",
+          "finished_at": "2026-08-20T09:01:00.000Z"
+        },
+        "diagnostics": {
+          "format": "text/plain",
+          "inline": "所有身份、时间、数据、分数均为人工构造的展示资料；未运行真实模型或容器。登记事件只代表本演示导入，不冒充原始创作。"
+        }
+      }
+    },
+    {
+      "id": "actor-service",
+      "kind": "asset",
+      "title": "流程服务",
+      "revision": "v1",
+      "description": "虚构角色；角色职责随具体 Activity 记录。",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "actor/service",
+        "revision": "v1",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "kind": "actor",
+        "produced_by": {
+          "id": "activity/register",
+          "revision": "done"
+        },
+        "access": {
+          "visibility": "internal"
+        },
+        "data": {
+          "type": "service",
+          "display_name": "流程服务"
+        }
+      }
+    },
+    {
+      "id": "actor-author",
+      "kind": "asset",
+      "title": "林：领域作者",
+      "revision": "v1",
+      "description": "虚构角色；角色职责随具体 Activity 记录。",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "actor/author",
+        "revision": "v1",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "kind": "actor",
+        "produced_by": {
+          "id": "activity/register",
+          "revision": "done"
+        },
+        "access": {
+          "visibility": "internal"
+        },
+        "data": {
+          "type": "person",
+          "display_name": "林：领域作者"
+        }
+      }
+    },
+    {
+      "id": "actor-annotator",
+      "kind": "asset",
+      "title": "周：数值标注员",
+      "revision": "v1",
+      "description": "虚构角色；角色职责随具体 Activity 记录。",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "actor/annotator",
+        "revision": "v1",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "kind": "actor",
+        "produced_by": {
+          "id": "activity/register",
+          "revision": "done"
+        },
+        "access": {
+          "visibility": "internal"
+        },
+        "data": {
+          "type": "person",
+          "display_name": "周：数值标注员"
+        }
+      }
+    },
+    {
+      "id": "actor-expert",
+      "kind": "asset",
+      "title": "陈：解析专家",
+      "revision": "v1",
+      "description": "虚构角色；角色职责随具体 Activity 记录。",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "actor/expert",
+        "revision": "v1",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "kind": "actor",
+        "produced_by": {
+          "id": "activity/register",
+          "revision": "done"
+        },
+        "access": {
+          "visibility": "internal"
+        },
+        "data": {
+          "type": "person",
+          "display_name": "陈：解析专家"
+        }
+      }
+    },
+    {
+      "id": "actor-reviewer-a",
+      "kind": "asset",
+      "title": "沈：衍射审核员",
+      "revision": "v1",
+      "description": "虚构角色；角色职责随具体 Activity 记录。",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "actor/reviewer-a",
+        "revision": "v1",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "kind": "actor",
+        "produced_by": {
+          "id": "activity/register",
+          "revision": "done"
+        },
+        "access": {
+          "visibility": "internal"
+        },
+        "data": {
+          "type": "person",
+          "display_name": "沈：衍射审核员"
+        }
+      }
+    },
+    {
+      "id": "actor-reviewer-b",
+      "kind": "asset",
+      "title": "顾：计算审核员",
+      "revision": "v1",
+      "description": "虚构角色；角色职责随具体 Activity 记录。",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "actor/reviewer-b",
+        "revision": "v1",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "kind": "actor",
+        "produced_by": {
+          "id": "activity/register",
+          "revision": "done"
+        },
+        "access": {
+          "visibility": "internal"
+        },
+        "data": {
+          "type": "person",
+          "display_name": "顾：计算审核员"
+        }
+      }
+    },
+    {
+      "id": "actor-statistician",
+      "kind": "asset",
+      "title": "许：统计审核员",
+      "revision": "v1",
+      "description": "虚构角色；角色职责随具体 Activity 记录。",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "actor/statistician",
+        "revision": "v1",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "kind": "actor",
+        "produced_by": {
+          "id": "activity/register",
+          "revision": "done"
+        },
+        "access": {
+          "visibility": "internal"
+        },
+        "data": {
+          "type": "person",
+          "display_name": "许：统计审核员"
+        }
+      }
+    },
+    {
+      "id": "actor-adjudicator",
+      "kind": "asset",
+      "title": "唐：裁决专家",
+      "revision": "v1",
+      "description": "虚构角色；角色职责随具体 Activity 记录。",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "actor/adjudicator",
+        "revision": "v1",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "kind": "actor",
+        "produced_by": {
+          "id": "activity/register",
+          "revision": "done"
+        },
+        "access": {
+          "visibility": "internal"
+        },
+        "data": {
+          "type": "person",
+          "display_name": "唐：裁决专家"
+        }
+      }
+    },
+    {
+      "id": "procedure-annotation",
+      "kind": "asset",
+      "title": "构造与标注规范",
+      "revision": "v1",
+      "description": "展示用版本化方法定义。",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "procedure/annotation",
+        "revision": "v1",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "kind": "procedure",
+        "produced_by": {
+          "id": "activity/register",
+          "revision": "done"
+        },
+        "access": {
+          "visibility": "internal"
+        },
+        "data": {
+          "name": "构造与标注规范",
+          "definition": {
+            "format": "text/plain",
+            "inline": "构造与标注规范的简化示意；实际系统须保存完整规则和代码。"
+          },
+          "config_schema": "https://schema.example.invalid/demo/annotation-config-v1"
+        }
+      }
+    },
+    {
+      "id": "procedure-review",
+      "kind": "asset",
+      "title": "独立审核与裁决规范",
+      "revision": "v1",
+      "description": "展示用版本化方法定义。",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "procedure/review",
+        "revision": "v1",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "kind": "procedure",
+        "produced_by": {
+          "id": "activity/register",
+          "revision": "done"
+        },
+        "access": {
+          "visibility": "internal"
+        },
+        "data": {
+          "name": "独立审核与裁决规范",
+          "definition": {
+            "format": "text/plain",
+            "inline": "独立审核与裁决规范的简化示意；实际系统须保存完整规则和代码。"
+          },
+          "config_schema": "https://schema.example.invalid/demo/review-config-v1"
+        }
+      }
+    },
+    {
+      "id": "procedure-execute",
+      "kind": "asset",
+      "title": "终端 Agent 执行协议",
+      "revision": "v1",
+      "description": "展示用版本化方法定义。",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "procedure/execute",
+        "revision": "v1",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "kind": "procedure",
+        "produced_by": {
+          "id": "activity/register",
+          "revision": "done"
+        },
+        "access": {
+          "visibility": "internal"
+        },
+        "data": {
+          "name": "终端 Agent 执行协议",
+          "definition": {
+            "format": "text/plain",
+            "inline": "终端 Agent 执行协议的简化示意；实际系统须保存完整规则和代码。"
+          },
+          "config_schema": "https://schema.example.invalid/demo/execute-config-v1"
+        }
+      }
+    },
+    {
+      "id": "procedure-verify",
+      "kind": "asset",
+      "title": "科学任务判分程序",
+      "revision": "v1",
+      "description": "展示用版本化方法定义。",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "procedure/verify",
+        "revision": "v1",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "kind": "procedure",
+        "produced_by": {
+          "id": "activity/register",
+          "revision": "done"
+        },
+        "access": {
+          "visibility": "internal"
+        },
+        "data": {
+          "name": "科学任务判分程序",
+          "definition": {
+            "format": "text/plain",
+            "inline": "科学任务判分程序的简化示意；实际系统须保存完整规则和代码。"
+          },
+          "config_schema": "https://schema.example.invalid/demo/verify-config-v1"
+        }
+      }
+    },
+    {
+      "id": "procedure-release",
+      "kind": "asset",
+      "title": "冻结发布与聚合协议",
+      "revision": "v1",
+      "description": "展示用版本化方法定义。",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "procedure/release",
+        "revision": "v1",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "kind": "procedure",
+        "produced_by": {
+          "id": "activity/register",
+          "revision": "done"
+        },
+        "access": {
+          "visibility": "internal"
+        },
+        "data": {
+          "name": "冻结发布与聚合协议",
+          "definition": {
+            "format": "text/plain",
+            "inline": "冻结发布与聚合协议的简化示意；实际系统须保存完整规则和代码。"
+          },
+          "config_schema": "https://schema.example.invalid/demo/release-config-v1"
+        }
+      }
+    },
+    {
+      "id": "procedure-rescore",
+      "kind": "asset",
+      "title": "重评分与输入等价审查",
+      "revision": "v1",
+      "description": "展示用版本化方法定义。",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "procedure/rescore",
+        "revision": "v1",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "kind": "procedure",
+        "produced_by": {
+          "id": "activity/register",
+          "revision": "done"
+        },
+        "access": {
+          "visibility": "internal"
+        },
+        "data": {
+          "name": "重评分与输入等价审查",
+          "definition": {
+            "format": "text/plain",
+            "inline": "重评分与输入等价审查的简化示意；实际系统须保存完整规则和代码。"
+          },
+          "config_schema": "https://schema.example.invalid/demo/rescore-config-v1"
+        }
+      }
+    },
+    {
+      "id": "procedure-generate",
+      "kind": "asset",
+      "title": "独立训练题生成器",
+      "revision": "v1",
+      "description": "展示用版本化方法定义。",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "procedure/generate",
+        "revision": "v1",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "kind": "procedure",
+        "produced_by": {
+          "id": "activity/register",
+          "revision": "done"
+        },
+        "access": {
+          "visibility": "internal"
+        },
+        "data": {
+          "name": "独立训练题生成器",
+          "definition": {
+            "format": "text/plain",
+            "inline": "独立训练题生成器的简化示意；实际系统须保存完整规则和代码。"
+          },
+          "config_schema": "https://schema.example.invalid/demo/generate-config-v1"
+        }
+      }
+    },
+    {
+      "id": "procedure-export",
+      "kind": "asset",
+      "title": "SFT / DPO 导出配方",
+      "revision": "v1",
+      "description": "展示用版本化方法定义。",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "procedure/export",
+        "revision": "v1",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "kind": "procedure",
+        "produced_by": {
+          "id": "activity/register",
+          "revision": "done"
+        },
+        "access": {
+          "visibility": "internal"
+        },
+        "data": {
+          "name": "SFT / DPO 导出配方",
+          "definition": {
+            "format": "text/plain",
+            "inline": "SFT / DPO 导出配方的简化示意；实际系统须保存完整规则和代码。"
+          },
+          "config_schema": "https://schema.example.invalid/demo/export-config-v1"
+        }
+      }
+    },
+    {
+      "id": "procedure-eligibility",
+      "kind": "asset",
+      "title": "用途与污染隔离审查",
+      "revision": "v1",
+      "description": "展示用版本化方法定义。",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "procedure/eligibility",
+        "revision": "v1",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "kind": "procedure",
+        "produced_by": {
+          "id": "activity/register",
+          "revision": "done"
+        },
+        "access": {
+          "visibility": "internal"
+        },
+        "data": {
+          "name": "用途与污染隔离审查",
+          "definition": {
+            "format": "text/plain",
+            "inline": "用途与污染隔离审查的简化示意；实际系统须保存完整规则和代码。"
+          },
+          "config_schema": "https://schema.example.invalid/demo/eligibility-config-v1"
+        }
+      }
+    },
+    {
+      "id": "policy-eval",
+      "kind": "asset",
+      "title": "评测隔离策略",
+      "revision": "v1",
+      "description": "限制来自用途规则，不能从 test 字符串推断。",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "policy/eval-only",
+        "revision": "v1",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "kind": "policy",
+        "produced_by": {
+          "id": "activity/register",
+          "revision": "done"
+        },
+        "access": {
+          "visibility": "internal"
+        },
+        "data": {
+          "rules": {
+            "format": "https://schema.example.invalid/demo/policy-v1",
+            "inline": {
+              "allowed_purposes": [
+                "evaluation",
+                "audit"
+              ],
+              "denied_purposes": [
+                "training"
+              ],
+              "propagate_to": [
+                "task derivatives",
+                "responses",
+                "trajectories",
+                "reference solutions"
+              ],
+              "enforcement": "导出端逐项检查；UI 隐藏不构成隔离。"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "policy-train",
+      "kind": "asset",
+      "title": "训练来源策略",
+      "revision": "v1",
+      "description": "独立来源、单独授权、去重通过后才允许导出。",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "policy/training",
+        "revision": "v1",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "kind": "policy",
+        "produced_by": {
+          "id": "activity/register",
+          "revision": "done"
+        },
+        "access": {
+          "visibility": "internal"
+        },
+        "data": {
+          "rules": {
+            "format": "https://schema.example.invalid/demo/policy-v1",
+            "inline": {
+              "allowed_purposes": [
+                "training"
+              ],
+              "required_checks": [
+                "source permission",
+                "lineage separation",
+                "content similarity",
+                "evaluation exposure"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "evaluator-review",
+      "kind": "asset",
+      "title": "领域审核准则",
+      "revision": "v1",
+      "description": "每一种判断独立定义值域。",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "evaluator/review",
+        "revision": "v1",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "kind": "evaluator",
+        "produced_by": {
+          "id": "activity/register",
+          "revision": "done"
+        },
+        "access": {
+          "visibility": "internal"
+        },
+        "data": {
+          "method": {
+            "id": "procedure/review",
+            "revision": "v1"
+          },
+          "criteria": [
+            {
+              "key": "review_decision",
+              "value_schema": "https://schema.example.invalid/demo/accept-revise-v1"
+            },
+            {
+              "key": "input_equivalence",
+              "value_schema": "https://schema.example.invalid/demo/boolean-v1"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "evaluator-policy",
+      "kind": "asset",
+      "title": "训练资格判定器",
+      "revision": "v1",
+      "description": "权限与污染筛查是独立证据。",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "evaluator/policy",
+        "revision": "v1",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "kind": "evaluator",
+        "produced_by": {
+          "id": "activity/register",
+          "revision": "done"
+        },
+        "access": {
+          "visibility": "internal"
+        },
+        "data": {
+          "method": {
+            "id": "procedure/eligibility",
+            "revision": "v1"
+          },
+          "criteria": [
+            {
+              "key": "training_eligibility",
+              "value_schema": "https://schema.example.invalid/demo/allow-block-v1"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "evaluator-preference",
+      "kind": "asset",
+      "title": "训练候选比较准则",
+      "revision": "v1",
+      "description": "偏好和正确性是两个 criterion。",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "evaluator/preference",
+        "revision": "v1",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "kind": "evaluator",
+        "produced_by": {
+          "id": "activity/register",
+          "revision": "done"
+        },
+        "access": {
+          "visibility": "internal"
+        },
+        "data": {
+          "method": {
+            "id": "procedure/review",
+            "revision": "v1"
+          },
+          "criteria": [
+            {
+              "key": "preference",
+              "value_schema": "https://schema.example.invalid/demo/winner-v1"
+            },
+            {
+              "key": "answer_correctness",
+              "value_schema": "https://schema.example.invalid/demo/boolean-v1"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "import",
+      "kind": "activity",
+      "title": "导入三种合成来源",
+      "revision": "done",
+      "description": "导入三种合成来源",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "activity/import",
+        "revision": "done",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "kind": "import",
+        "state": "completed",
+        "inputs": [],
+        "participants": [
+          {
+            "actor": {
+              "id": "actor/service",
+              "revision": "v1"
+            },
+            "role": "importer"
+          }
+        ],
+        "time": {
+          "started_at": "2026-08-20T09:02:00.000Z",
+          "finished_at": "2026-08-20T09:03:00.000Z"
+        }
+      }
+    },
+    {
+      "id": "source-spectrum",
+      "kind": "asset",
+      "title": "合成衍射曲线 PNG",
+      "revision": "v1",
+      "description": "模拟光谱可视图；无需声称来自真实实验。",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "artifact/spectrum",
+        "revision": "v1",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "kind": "artifact",
+        "produced_by": {
+          "id": "activity/import",
+          "revision": "done"
+        },
+        "access": {
+          "visibility": "internal"
+        },
+        "data": {
+          "media_type": "image/png",
+          "storage": {
+            "uri": "demo://artifact/spectrum",
+            "availability": "unavailable"
+          },
+          "source": {
+            "uri": "https://example.invalid/synthetic-materials-case",
+            "revision": "demo-v1",
+            "locator": "source-spectrum"
+          },
+          "note": "展示占位记录，没有对应可下载实验文件，也没有伪造文件 hash。"
+        }
+      }
+    },
+    {
+      "id": "source-data",
+      "kind": "asset",
+      "title": "合成计数 CSV",
+      "revision": "v1",
+      "description": "2θ、计数、逐点噪声，附生成参数。",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "artifact/counts",
+        "revision": "v1",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "kind": "artifact",
+        "produced_by": {
+          "id": "activity/import",
+          "revision": "done"
+        },
+        "access": {
+          "visibility": "internal"
+        },
+        "data": {
+          "media_type": "text/csv",
+          "storage": {
+            "uri": "demo://artifact/counts",
+            "availability": "unavailable"
+          },
+          "source": {
+            "uri": "https://example.invalid/synthetic-materials-case",
+            "revision": "demo-v1",
+            "locator": "source-data"
+          },
+          "note": "展示占位记录，没有对应可下载实验文件，也没有伪造文件 hash。"
+        }
+      }
+    },
+    {
+      "id": "source-method",
+      "kind": "asset",
+      "title": "合成实验条件与模型说明",
+      "revision": "v1",
+      "description": "仪器响应、相模板、误差假设与单位。",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "artifact/method-note",
+        "revision": "v1",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "kind": "artifact",
+        "produced_by": {
+          "id": "activity/import",
+          "revision": "done"
+        },
+        "access": {
+          "visibility": "internal"
+        },
+        "data": {
+          "media_type": "text/plain",
+          "storage": {
+            "uri": "demo://artifact/method-note",
+            "availability": "unavailable"
+          },
+          "source": {
+            "uri": "https://example.invalid/synthetic-materials-case",
+            "revision": "demo-v1",
+            "locator": "source-method"
+          },
+          "note": "展示占位记录，没有对应可下载实验文件，也没有伪造文件 hash。"
+        }
+      }
+    },
+    {
+      "id": "environment",
+      "kind": "asset",
+      "title": "固定终端与 verifier 环境",
+      "revision": "v1",
+      "description": "固定依赖结构示意，未构建或执行镜像。",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "environment/materials",
+        "revision": "v1",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "kind": "environment",
+        "produced_by": {
+          "id": "activity/register",
+          "revision": "done"
+        },
+        "access": {
+          "visibility": "internal"
+        },
+        "data": {
+          "runtime": {
+            "kind": "container",
+            "locator": "demo://materials-container",
+            "revision": "illustrative-image-revision-v1"
+          },
+          "initialization": {
+            "format": "application/json",
+            "inline": {
+              "agent_mounts": [
+                "spectrum.png",
+                "counts.csv",
+                "method.txt"
+              ],
+              "hidden_mounts": [
+                "verifier fixtures"
+              ],
+              "network": "disabled"
+            }
+          },
+          "dependencies": [
+            {
+              "name": "numpy",
+              "scope": "agent",
+              "source": "demo-lockfile",
+              "version": "illustrative-pinned-version"
+            },
+            {
+              "name": "pytest",
+              "scope": "verifier",
+              "source": "demo-lockfile",
+              "version": "illustrative-pinned-version"
+            }
+          ],
+          "limits": {
+            "cpu": 4,
+            "memory_mb": 8192,
+            "timeout_seconds": 900
+          },
+          "reproducibility": "pinned",
+          "note": "pinned 表示该设计要求；这里的 locator/revision 是教学占位符，不是已验证的可重放环境。"
+        }
+      }
+    },
+    {
+      "id": "verifier-v1",
+      "kind": "asset",
+      "title": "隐藏 verifier v1",
+      "revision": "v1",
+      "description": "含一个尚未发现的数组顺序缺陷。",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "evaluator/materials",
+        "revision": "v1",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "kind": "evaluator",
+        "produced_by": {
+          "id": "activity/register",
+          "revision": "done"
+        },
+        "access": {
+          "visibility": "restricted",
+          "policy": {
+            "id": "policy/eval-only",
+            "revision": "v1"
+          }
+        },
+        "data": {
+          "method": {
+            "id": "procedure/verify",
+            "revision": "v1"
+          },
+          "environment": {
+            "id": "environment/materials",
+            "revision": "v1"
+          },
+          "criteria": [
+            {
+              "key": "task_pass",
+              "description": "格式、物理约束、数值容差与误差解释全部通过",
+              "value_schema": "https://schema.example.invalid/demo/boolean-v1"
+            }
+          ],
+          "hidden_test_groups": [
+            "输出 JSON 合同",
+            "相比例归一化",
+            "解析合成基准容差",
+            "误差模型引用"
+          ],
+          "known_later_defect": "用数组位置比较相名；应按 phase_id 对齐。"
+        }
+      }
+    },
+    {
+      "id": "author",
+      "kind": "activity",
+      "title": "三人分工构造 v1",
+      "revision": "done",
+      "description": "三人分工构造 v1",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "activity/author",
+        "revision": "done",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "kind": "author",
+        "state": "completed",
+        "inputs": [
+          {
+            "role": "source",
+            "target": {
+              "ref": {
+                "id": "artifact/spectrum",
+                "revision": "v1"
+              }
+            }
+          },
+          {
+            "role": "source",
+            "target": {
+              "ref": {
+                "id": "artifact/counts",
+                "revision": "v1"
+              }
+            }
+          },
+          {
+            "role": "source",
+            "target": {
+              "ref": {
+                "id": "artifact/method-note",
+                "revision": "v1"
+              }
+            }
+          }
+        ],
+        "participants": [
+          {
+            "actor": {
+              "id": "actor/author",
+              "revision": "v1"
+            },
+            "role": "author"
+          },
+          {
+            "actor": {
+              "id": "actor/annotator",
+              "revision": "v1"
+            },
+            "role": "annotator"
+          },
+          {
+            "actor": {
+              "id": "actor/expert",
+              "revision": "v1"
+            },
+            "role": "rationale_author"
+          }
+        ],
+        "time": {
+          "started_at": "2026-08-20T09:04:00.000Z",
+          "finished_at": "2026-08-20T09:05:00.000Z"
+        },
+        "method": {
+          "procedure": {
+            "id": "procedure/annotation",
+            "revision": "v1"
+          },
+          "config": {}
+        },
+        "workflow": {
+          "run_id": "production-017",
+          "stage": "author",
+          "round": 1
+        },
+        "mappings": [
+          {
+            "output": {
+              "ref": {
+                "id": "task/material-017",
+                "revision": "v1"
+              },
+              "path": "/data/input"
+            },
+            "inputs": [
+              {
+                "ref": {
+                  "id": "artifact/spectrum",
+                  "revision": "v1"
+                }
+              },
+              {
+                "ref": {
+                  "id": "artifact/method-note",
+                  "revision": "v1"
+                }
+              }
+            ],
+            "contributors": [
+              {
+                "actor": {
+                  "id": "actor/author",
+                  "revision": "v1"
+                },
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "output": {
+              "ref": {
+                "id": "task/material-017",
+                "revision": "v1"
+              },
+              "path": "/data/references/0/value"
+            },
+            "inputs": [
+              {
+                "ref": {
+                  "id": "artifact/counts",
+                  "revision": "v1"
+                }
+              }
+            ],
+            "contributors": [
+              {
+                "actor": {
+                  "id": "actor/annotator",
+                  "revision": "v1"
+                },
+                "role": "annotator"
+              }
+            ]
+          },
+          {
+            "output": {
+              "ref": {
+                "id": "task/material-017",
+                "revision": "v1"
+              },
+              "path": "/data/references/1/value"
+            },
+            "inputs": [
+              {
+                "ref": {
+                  "id": "artifact/method-note",
+                  "revision": "v1"
+                }
+              }
+            ],
+            "contributors": [
+              {
+                "actor": {
+                  "id": "actor/expert",
+                  "revision": "v1"
+                },
+                "role": "rationale_author"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "task-v1",
+      "kind": "asset",
+      "title": "评测题目 v1",
+      "revision": "v1",
+      "description": "题干、答案、解析在同一个快照中；责任映射定位各字段。",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "task/material-017",
+        "revision": "v1",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "kind": "task",
+        "produced_by": {
+          "id": "activity/author",
+          "revision": "done"
+        },
+        "access": {
+          "visibility": "restricted",
+          "policy": {
+            "id": "policy/eval-only",
+            "revision": "v1"
+          }
+        },
+        "data": {
+          "profile": "https://schema.example.invalid/demo/materials-terminal-v1",
+          "input": {
+            "messages": [
+              {
+                "role": "user",
+                "content": {
+                  "format": "text/plain",
+                  "inline": "根据图像、计数与实验说明估计两相比例及区间，生成 answer.json 和方法报告。误差相关性尚未明确。"
+                }
+              }
+            ],
+            "files": [
+              {
+                "name": "/input/spectrum.png",
+                "artifact": {
+                  "id": "artifact/spectrum",
+                  "revision": "v1"
+                }
+              },
+              {
+                "name": "/input/counts.csv",
+                "artifact": {
+                  "id": "artifact/counts",
+                  "revision": "v1"
+                }
+              },
+              {
+                "name": "/input/method.txt",
+                "artifact": {
+                  "id": "artifact/method-note",
+                  "revision": "v1"
+                }
+              }
+            ]
+          },
+          "references": [
+            {
+              "key": "answer",
+              "role": "answer",
+              "audience": "evaluator",
+              "value": {
+                "format": "application/json",
+                "inline": {
+                  "phase_A": 0.63,
+                  "phase_B": 0.37,
+                  "illustrative_interval_A": [
+                    0.58,
+                    0.68
+                  ]
+                }
+              }
+            },
+            {
+              "key": "rationale",
+              "role": "rationale",
+              "audience": "curator",
+              "value": {
+                "format": "text/plain",
+                "inline": "原始推导未区分逐点噪声与共享校准误差。"
+              }
+            }
+          ],
+          "environment": {
+            "id": "environment/materials",
+            "revision": "v1"
+          },
+          "evaluation": {
+            "id": "evaluator/materials",
+            "revision": "v1"
+          },
+          "attributes": {
+            "domain": "materials-science",
+            "tags": [
+              "synthetic",
+              "multimodal",
+              "terminal",
+              "uncertainty"
+            ]
+          },
+          "lineage_key": "eval-materials-family-017"
+        }
+      }
+    },
+    {
+      "id": "review-1a",
+      "kind": "activity",
+      "title": "第 1 轮：领域审核要求修改",
+      "revision": "done",
+      "description": "第 1 轮：领域审核要求修改",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "activity/review-1a",
+        "revision": "done",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "kind": "review",
+        "state": "completed",
+        "inputs": [
+          {
+            "role": "task",
+            "target": {
+              "ref": {
+                "id": "task/material-017",
+                "revision": "v1"
+              }
+            }
+          },
+          {
+            "role": "rubric",
+            "target": {
+              "ref": {
+                "id": "evaluator/review",
+                "revision": "v1"
+              }
+            }
+          }
+        ],
+        "participants": [
+          {
+            "actor": {
+              "id": "actor/reviewer-a",
+              "revision": "v1"
+            },
+            "role": "reviewer"
+          }
+        ],
+        "time": {
+          "started_at": "2026-08-20T09:06:00.000Z",
+          "finished_at": "2026-08-20T09:07:00.000Z"
+        },
+        "method": {
+          "procedure": {
+            "id": "procedure/review",
+            "revision": "v1"
+          },
+          "config": {}
+        },
+        "workflow": {
+          "run_id": "production-017",
+          "stage": "review",
+          "round": 1
+        }
+      }
+    },
+    {
+      "id": "judgment-1a",
+      "kind": "assessment",
+      "title": "v1：误差模型有歧义",
+      "revision": "v1",
+      "description": "v1：误差模型有歧义",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "assessment/review-1a",
+        "revision": "v1",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "subjects": [
+          {
+            "ref": {
+              "id": "task/material-017",
+              "revision": "v1"
+            },
+            "path": "/data/input"
+          }
+        ],
+        "criterion": {
+          "evaluator": {
+            "id": "evaluator/review",
+            "revision": "v1"
+          },
+          "key": "review_decision"
+        },
+        "result": {
+          "status": "value",
+          "value": "revise"
+        },
+        "produced_by": {
+          "id": "activity/review-1a",
+          "revision": "done"
+        },
+        "evidence": [],
+        "rationale": {
+          "format": "text/plain",
+          "inline": "共享校准偏移不可当作逐点独立噪声；当前问题不能唯一约束区间算法。"
+        }
+      }
+    },
+    {
+      "id": "review-1b",
+      "kind": "activity",
+      "title": "第 1 轮：计算审核同意",
+      "revision": "done",
+      "description": "第 1 轮：计算审核同意",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "activity/review-1b",
+        "revision": "done",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "kind": "review",
+        "state": "completed",
+        "inputs": [
+          {
+            "role": "task",
+            "target": {
+              "ref": {
+                "id": "task/material-017",
+                "revision": "v1"
+              }
+            }
+          },
+          {
+            "role": "rubric",
+            "target": {
+              "ref": {
+                "id": "evaluator/review",
+                "revision": "v1"
+              }
+            }
+          }
+        ],
+        "participants": [
+          {
+            "actor": {
+              "id": "actor/reviewer-b",
+              "revision": "v1"
+            },
+            "role": "reviewer"
+          }
+        ],
+        "time": {
+          "started_at": "2026-08-20T09:08:00.000Z",
+          "finished_at": "2026-08-20T09:09:00.000Z"
+        },
+        "method": {
+          "procedure": {
+            "id": "procedure/review",
+            "revision": "v1"
+          },
+          "config": {}
+        },
+        "workflow": {
+          "run_id": "production-017",
+          "stage": "review",
+          "round": 1
+        }
+      }
+    },
+    {
+      "id": "judgment-1b",
+      "kind": "assessment",
+      "title": "v1：按现有脚本可计算",
+      "revision": "v1",
+      "description": "v1：按现有脚本可计算",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "assessment/review-1b",
+        "revision": "v1",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "subjects": [
+          {
+            "ref": {
+              "id": "task/material-017",
+              "revision": "v1"
+            }
+          }
+        ],
+        "criterion": {
+          "evaluator": {
+            "id": "evaluator/review",
+            "revision": "v1"
+          },
+          "key": "review_decision"
+        },
+        "result": {
+          "status": "value",
+          "value": "accept"
+        },
+        "produced_by": {
+          "id": "activity/review-1b",
+          "revision": "done"
+        },
+        "evidence": [],
+        "rationale": {
+          "format": "text/plain",
+          "inline": "现有脚本可给出数值；此结论不消除题干歧义。"
+        }
+      }
+    },
+    {
+      "id": "adjudicate-1",
+      "kind": "activity",
+      "title": "第 1 轮裁决并修订",
+      "revision": "done",
+      "description": "第 1 轮裁决并修订",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "activity/adjudicate-1",
+        "revision": "done",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "kind": "adjudicate",
+        "state": "completed",
+        "inputs": [
+          {
+            "role": "task",
+            "target": {
+              "ref": {
+                "id": "task/material-017",
+                "revision": "v1"
+              }
+            }
+          },
+          {
+            "role": "opinion",
+            "target": {
+              "ref": {
+                "id": "assessment/review-1a",
+                "revision": "v1"
+              }
+            }
+          },
+          {
+            "role": "opinion",
+            "target": {
+              "ref": {
+                "id": "assessment/review-1b",
+                "revision": "v1"
+              }
+            }
+          }
+        ],
+        "participants": [
+          {
+            "actor": {
+              "id": "actor/adjudicator",
+              "revision": "v1"
+            },
+            "role": "adjudicator"
+          },
+          {
+            "actor": {
+              "id": "actor/author",
+              "revision": "v1"
+            },
+            "role": "author"
+          }
+        ],
+        "time": {
+          "started_at": "2026-08-20T09:10:00.000Z",
+          "finished_at": "2026-08-20T09:11:00.000Z"
+        },
+        "method": {
+          "procedure": {
+            "id": "procedure/review",
+            "revision": "v1"
+          },
+          "config": {}
+        },
+        "workflow": {
+          "run_id": "production-017",
+          "stage": "adjudication",
+          "round": 1
+        },
+        "mappings": [
+          {
+            "output": {
+              "ref": {
+                "id": "task/material-017",
+                "revision": "v2"
+              },
+              "path": "/data/input"
+            },
+            "inputs": [
+              {
+                "ref": {
+                  "id": "task/material-017",
+                  "revision": "v1"
+                },
+                "path": "/data/input"
+              },
+              {
+                "ref": {
+                  "id": "assessment/review-1a",
+                  "revision": "v1"
+                }
+              }
+            ],
+            "contributors": [
+              {
+                "actor": {
+                  "id": "actor/author",
+                  "revision": "v1"
+                },
+                "role": "reviser"
+              }
+            ]
+          },
+          {
+            "output": {
+              "ref": {
+                "id": "task/material-017",
+                "revision": "v2"
+              },
+              "path": "/data/references/1/value"
+            },
+            "inputs": [
+              {
+                "ref": {
+                  "id": "task/material-017",
+                  "revision": "v1"
+                },
+                "path": "/data/references/1/value"
+              },
+              {
+                "ref": {
+                  "id": "assessment/review-1a",
+                  "revision": "v1"
+                }
+              }
+            ],
+            "contributors": [
+              {
+                "actor": {
+                  "id": "actor/author",
+                  "revision": "v1"
+                },
+                "role": "reviser"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "decision-1",
+      "kind": "assessment",
+      "title": "裁决：补全生成与误差假设",
+      "revision": "v1",
+      "description": "裁决：补全生成与误差假设",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "assessment/decision-1",
+        "revision": "v1",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "subjects": [
+          {
+            "ref": {
+              "id": "task/material-017",
+              "revision": "v1"
+            }
+          }
+        ],
+        "criterion": {
+          "evaluator": {
+            "id": "evaluator/review",
+            "revision": "v1"
+          },
+          "key": "review_decision"
+        },
+        "result": {
+          "status": "value",
+          "value": "revise"
+        },
+        "produced_by": {
+          "id": "activity/adjudicate-1",
+          "revision": "done"
+        },
+        "evidence": []
+      }
+    },
+    {
+      "id": "task-v2",
+      "kind": "asset",
+      "title": "评测题目 v2",
+      "revision": "v2",
+      "description": "修改题干与解析；旧审核依旧针对 v1。",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "task/material-017",
+        "revision": "v2",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "kind": "task",
+        "produced_by": {
+          "id": "activity/adjudicate-1",
+          "revision": "done"
+        },
+        "access": {
+          "visibility": "restricted",
+          "policy": {
+            "id": "policy/eval-only",
+            "revision": "v1"
+          }
+        },
+        "data": {
+          "profile": "https://schema.example.invalid/demo/materials-terminal-v1",
+          "input": {
+            "messages": [
+              {
+                "role": "user",
+                "content": {
+                  "format": "text/plain",
+                  "inline": "按给定的两相线性混合模型估计相比例；显式采用计数噪声与共享校准偏移，输出 phase_id 标识的比例、区间与假设。相的排列顺序不影响语义。"
+                }
+              }
+            ],
+            "files": [
+              {
+                "name": "/input/spectrum.png",
+                "artifact": {
+                  "id": "artifact/spectrum",
+                  "revision": "v1"
+                }
+              },
+              {
+                "name": "/input/counts.csv",
+                "artifact": {
+                  "id": "artifact/counts",
+                  "revision": "v1"
+                }
+              },
+              {
+                "name": "/input/method.txt",
+                "artifact": {
+                  "id": "artifact/method-note",
+                  "revision": "v1"
+                }
+              }
+            ]
+          },
+          "references": [
+            {
+              "key": "answer",
+              "role": "answer",
+              "audience": "evaluator",
+              "value": {
+                "format": "application/json",
+                "inline": {
+                  "phase_A": 0.63,
+                  "phase_B": 0.37,
+                  "illustrative_interval_A": [
+                    0.58,
+                    0.68
+                  ]
+                }
+              }
+            },
+            {
+              "key": "rationale",
+              "role": "rationale",
+              "audience": "curator",
+              "value": {
+                "format": "text/plain",
+                "inline": "说明校准偏移作为共享 nuisance variable 的处理及区间计算约定；这些数值仅用于示意。"
+              }
+            }
+          ],
+          "environment": {
+            "id": "environment/materials",
+            "revision": "v1"
+          },
+          "evaluation": {
+            "id": "evaluator/materials",
+            "revision": "v1"
+          },
+          "attributes": {
+            "domain": "materials-science",
+            "tags": [
+              "synthetic",
+              "multimodal",
+              "terminal",
+              "uncertainty"
+            ]
+          },
+          "lineage_key": "eval-materials-family-017"
+        },
+        "parents": [
+          {
+            "id": "task/material-017",
+            "revision": "v1"
+          }
+        ]
+      }
+    },
+    {
+      "id": "review-2a",
+      "kind": "activity",
+      "title": "第 2 轮独立审核 2a",
+      "revision": "done",
+      "description": "第 2 轮独立审核 2a",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "activity/review-2a",
+        "revision": "done",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "kind": "review",
+        "state": "completed",
+        "inputs": [
+          {
+            "role": "task",
+            "target": {
+              "ref": {
+                "id": "task/material-017",
+                "revision": "v2"
+              }
+            }
+          },
+          {
+            "role": "rubric",
+            "target": {
+              "ref": {
+                "id": "evaluator/review",
+                "revision": "v1"
+              }
+            }
+          }
+        ],
+        "participants": [
+          {
+            "actor": {
+              "id": "actor/reviewer-a",
+              "revision": "v1"
+            },
+            "role": "reviewer"
+          }
+        ],
+        "time": {
+          "started_at": "2026-08-20T09:12:00.000Z",
+          "finished_at": "2026-08-20T09:13:00.000Z"
+        },
+        "method": {
+          "procedure": {
+            "id": "procedure/review",
+            "revision": "v1"
+          },
+          "config": {}
+        },
+        "workflow": {
+          "run_id": "production-017",
+          "stage": "review",
+          "round": 2
+        }
+      }
+    },
+    {
+      "id": "judgment-2a",
+      "kind": "assessment",
+      "title": "第 2 轮：通过",
+      "revision": "v1",
+      "description": "第 2 轮：通过",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "assessment/review-2a",
+        "revision": "v1",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "subjects": [
+          {
+            "ref": {
+              "id": "task/material-017",
+              "revision": "v2"
+            }
+          }
+        ],
+        "criterion": {
+          "evaluator": {
+            "id": "evaluator/review",
+            "revision": "v1"
+          },
+          "key": "review_decision"
+        },
+        "result": {
+          "status": "value",
+          "value": "accept"
+        },
+        "produced_by": {
+          "id": "activity/review-2a",
+          "revision": "done"
+        },
+        "evidence": [],
+        "rationale": {
+          "format": "text/plain",
+          "inline": "生成模型和共享校准误差已明确，题目语义可判定。"
+        }
+      }
+    },
+    {
+      "id": "review-2b",
+      "kind": "activity",
+      "title": "第 2 轮独立审核 2b",
+      "revision": "done",
+      "description": "第 2 轮独立审核 2b",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "activity/review-2b",
+        "revision": "done",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "kind": "review",
+        "state": "completed",
+        "inputs": [
+          {
+            "role": "task",
+            "target": {
+              "ref": {
+                "id": "task/material-017",
+                "revision": "v2"
+              }
+            }
+          },
+          {
+            "role": "rubric",
+            "target": {
+              "ref": {
+                "id": "evaluator/review",
+                "revision": "v1"
+              }
+            }
+          }
+        ],
+        "participants": [
+          {
+            "actor": {
+              "id": "actor/statistician",
+              "revision": "v1"
+            },
+            "role": "reviewer"
+          }
+        ],
+        "time": {
+          "started_at": "2026-08-20T09:14:00.000Z",
+          "finished_at": "2026-08-20T09:15:00.000Z"
+        },
+        "method": {
+          "procedure": {
+            "id": "procedure/review",
+            "revision": "v1"
+          },
+          "config": {}
+        },
+        "workflow": {
+          "run_id": "production-017",
+          "stage": "review",
+          "round": 2
+        }
+      }
+    },
+    {
+      "id": "judgment-2b",
+      "kind": "assessment",
+      "title": "第 2 轮：质疑判分边界",
+      "revision": "v1",
+      "description": "第 2 轮：质疑判分边界",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "assessment/review-2b",
+        "revision": "v1",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "subjects": [
+          {
+            "ref": {
+              "id": "task/material-017",
+              "revision": "v2"
+            }
+          }
+        ],
+        "criterion": {
+          "evaluator": {
+            "id": "evaluator/review",
+            "revision": "v1"
+          },
+          "key": "review_decision"
+        },
+        "result": {
+          "status": "value",
+          "value": "revise"
+        },
+        "produced_by": {
+          "id": "activity/review-2b",
+          "revision": "done"
+        },
+        "evidence": [],
+        "rationale": {
+          "format": "text/plain",
+          "inline": "审核原计划把某一种区间算法的输出当唯一答案；应允许等价算法。"
+        }
+      }
+    },
+    {
+      "id": "adjudicate-2",
+      "kind": "activity",
+      "title": "第 2 轮裁决：按明确容差验收",
+      "revision": "done",
+      "description": "第 2 轮裁决：按明确容差验收",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "activity/adjudicate-2",
+        "revision": "done",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "kind": "adjudicate",
+        "state": "completed",
+        "inputs": [
+          {
+            "role": "task",
+            "target": {
+              "ref": {
+                "id": "task/material-017",
+                "revision": "v2"
+              }
+            }
+          },
+          {
+            "role": "opinion",
+            "target": {
+              "ref": {
+                "id": "assessment/review-2a",
+                "revision": "v1"
+              }
+            }
+          },
+          {
+            "role": "opinion",
+            "target": {
+              "ref": {
+                "id": "assessment/review-2b",
+                "revision": "v1"
+              }
+            }
+          },
+          {
+            "role": "verifier",
+            "target": {
+              "ref": {
+                "id": "evaluator/materials",
+                "revision": "v1"
+              }
+            }
+          }
+        ],
+        "participants": [
+          {
+            "actor": {
+              "id": "actor/adjudicator",
+              "revision": "v1"
+            },
+            "role": "adjudicator"
+          }
+        ],
+        "time": {
+          "started_at": "2026-08-20T09:16:00.000Z",
+          "finished_at": "2026-08-20T09:17:00.000Z"
+        },
+        "method": {
+          "procedure": {
+            "id": "procedure/review",
+            "revision": "v1"
+          },
+          "config": {
+            "accept_equivalent_algorithms": true
+          }
+        },
+        "workflow": {
+          "run_id": "production-017",
+          "stage": "adjudication",
+          "round": 2
+        }
+      }
+    },
+    {
+      "id": "decision-2",
+      "kind": "assessment",
+      "title": "v2 发布审查通过",
+      "revision": "v1",
+      "description": "v2 发布审查通过",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "assessment/decision-2",
+        "revision": "v1",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "subjects": [
+          {
+            "ref": {
+              "id": "task/material-017",
+              "revision": "v2"
+            }
+          }
+        ],
+        "criterion": {
+          "evaluator": {
+            "id": "evaluator/review",
+            "revision": "v1"
+          },
+          "key": "review_decision"
+        },
+        "result": {
+          "status": "value",
+          "value": "accept"
+        },
+        "produced_by": {
+          "id": "activity/adjudicate-2",
+          "revision": "done"
+        },
+        "evidence": [
+          {
+            "target": {
+              "ref": {
+                "id": "assessment/review-2a",
+                "revision": "v1"
+              }
+            }
+          },
+          {
+            "target": {
+              "ref": {
+                "id": "assessment/review-2b",
+                "revision": "v1"
+              }
+            }
+          }
+        ],
+        "rationale": {
+          "format": "text/plain",
+          "inline": "采用声明的解析基准与数值容差，允许等价算法；这是一项审核结论，不能保证 verifier 没有实现缺陷。"
+        }
+      }
+    },
+    {
+      "id": "release-1",
+      "kind": "activity",
+      "title": "冻结原评测发布",
+      "revision": "done",
+      "description": "冻结原评测发布",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "activity/release-1",
+        "revision": "done",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "kind": "release",
+        "state": "completed",
+        "inputs": [
+          {
+            "role": "task",
+            "target": {
+              "ref": {
+                "id": "task/material-017",
+                "revision": "v2"
+              }
+            }
+          },
+          {
+            "role": "approval",
+            "target": {
+              "ref": {
+                "id": "assessment/decision-2",
+                "revision": "v1"
+              }
+            }
+          },
+          {
+            "role": "policy",
+            "target": {
+              "ref": {
+                "id": "policy/eval-only",
+                "revision": "v1"
+              }
+            }
+          }
+        ],
+        "participants": [
+          {
+            "actor": {
+              "id": "actor/service",
+              "revision": "v1"
+            },
+            "role": "publisher"
+          }
+        ],
+        "time": {
+          "started_at": "2026-08-20T09:18:00.000Z",
+          "finished_at": "2026-08-20T09:19:00.000Z"
+        },
+        "method": {
+          "procedure": {
+            "id": "procedure/release",
+            "revision": "v1"
+          },
+          "config": {
+            "revision_policy": "immutable",
+            "repeat_policy": "retain every attempt"
+          }
+        }
+      }
+    },
+    {
+      "id": "eval-release-1",
+      "kind": "collection",
+      "title": "评测发布 r1",
+      "revision": "r1",
+      "description": "冻结 task@v2、执行协议、隔离规则与审核证据。",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "collection/materials-eval",
+        "revision": "r1",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "name": "Synthetic Materials Eval",
+        "purpose": "eval",
+        "members": [
+          {
+            "key": "M017",
+            "target": {
+              "id": "task/material-017",
+              "revision": "v2"
+            },
+            "split": "test"
+          }
+        ],
+        "produced_by": {
+          "id": "activity/release-1",
+          "revision": "done"
+        },
+        "protocol": {
+          "id": "procedure/execute",
+          "revision": "v1"
+        },
+        "policy": {
+          "id": "policy/eval-only",
+          "revision": "v1"
+        },
+        "release_evidence": [
+          {
+            "id": "assessment/decision-2",
+            "revision": "v1"
+          }
+        ]
+      }
+    },
+    {
+      "id": "model-a",
+      "kind": "asset",
+      "title": "虚构模型 A",
+      "revision": "v1",
+      "description": "API 模型快照不能确认，明确标记 opaque。",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "model/A",
+        "revision": "v1",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "kind": "model",
+        "produced_by": {
+          "id": "activity/register",
+          "revision": "done"
+        },
+        "access": {
+          "visibility": "internal"
+        },
+        "data": {
+          "provider": "fictional-provider",
+          "name": "Synthetic-A",
+          "resolution": "opaque"
+        }
+      }
+    },
+    {
+      "id": "model-b",
+      "kind": "asset",
+      "title": "虚构模型 B",
+      "revision": "v1",
+      "description": "API 模型快照不能确认，明确标记 opaque。",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "model/B",
+        "revision": "v1",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "kind": "model",
+        "produced_by": {
+          "id": "activity/register",
+          "revision": "done"
+        },
+        "access": {
+          "visibility": "internal"
+        },
+        "data": {
+          "provider": "fictional-provider",
+          "name": "Synthetic-B",
+          "resolution": "opaque"
+        }
+      }
+    },
+    {
+      "id": "run-a1",
+      "kind": "activity",
+      "title": "模型 A 尝试 a1",
+      "revision": "done",
+      "description": "模型 A 尝试 a1",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "activity/run-a1",
+        "revision": "done",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "kind": "rollout",
+        "state": "failed",
+        "inputs": [
+          {
+            "role": "task",
+            "target": {
+              "ref": {
+                "id": "task/material-017",
+                "revision": "v2"
+              }
+            }
+          },
+          {
+            "role": "release",
+            "target": {
+              "ref": {
+                "id": "collection/materials-eval",
+                "revision": "r1"
+              }
+            }
+          }
+        ],
+        "participants": [
+          {
+            "actor": {
+              "id": "actor/service",
+              "revision": "v1"
+            },
+            "role": "runner"
+          }
+        ],
+        "time": {
+          "started_at": "2026-08-20T09:20:00.000Z",
+          "finished_at": "2026-08-20T09:21:00.000Z"
+        },
+        "method": {
+          "procedure": {
+            "id": "procedure/execute",
+            "revision": "v1"
+          },
+          "config": {
+            "temperature": 0.2,
+            "max_tool_steps": 80,
+            "seed": 17
+          },
+          "models": [
+            {
+              "role": "candidate",
+              "model": {
+                "id": "model/A",
+                "revision": "v1"
+              }
+            }
+          ],
+          "environments": [
+            {
+              "id": "environment/materials",
+              "revision": "v1"
+            }
+          ]
+        },
+        "diagnostics": {
+          "format": "application/json",
+          "inline": {
+            "category": "infra_error",
+            "reason": "容器磁盘挂载失败，模型尚未接收输入。"
+          }
+        }
+      }
+    },
+    {
+      "id": "run-a2",
+      "kind": "activity",
+      "title": "模型 A 尝试 a2",
+      "revision": "done",
+      "description": "模型 A 尝试 a2",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "activity/run-a2",
+        "revision": "done",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "kind": "rollout",
+        "state": "completed",
+        "inputs": [
+          {
+            "role": "task",
+            "target": {
+              "ref": {
+                "id": "task/material-017",
+                "revision": "v2"
+              }
+            }
+          },
+          {
+            "role": "release",
+            "target": {
+              "ref": {
+                "id": "collection/materials-eval",
+                "revision": "r1"
+              }
+            }
+          }
+        ],
+        "participants": [
+          {
+            "actor": {
+              "id": "actor/service",
+              "revision": "v1"
+            },
+            "role": "runner"
+          }
+        ],
+        "time": {
+          "started_at": "2026-08-20T09:22:00.000Z",
+          "finished_at": "2026-08-20T09:23:00.000Z"
+        },
+        "method": {
+          "procedure": {
+            "id": "procedure/execute",
+            "revision": "v1"
+          },
+          "config": {
+            "temperature": 0.2,
+            "max_tool_steps": 80,
+            "seed": 17
+          },
+          "models": [
+            {
+              "role": "candidate",
+              "model": {
+                "id": "model/A",
+                "revision": "v1"
+              }
+            }
+          ],
+          "environments": [
+            {
+              "id": "environment/materials",
+              "revision": "v1"
+            }
+          ]
+        },
+        "retry_of": {
+          "id": "activity/run-a1",
+          "revision": "done"
+        },
+        "diagnostics": {
+          "format": "application/json",
+          "inline": {
+            "completed": true,
+            "environment_observation": "synthetic demonstration only"
+          }
+        }
+      }
+    },
+    {
+      "id": "response-a2",
+      "kind": "asset",
+      "title": "候选结果 a2",
+      "revision": "v1",
+      "description": "两个结果相比例相同，仅相顺序不同。",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "response/a2",
+        "revision": "v1",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "kind": "response",
+        "produced_by": {
+          "id": "activity/run-a2",
+          "revision": "done"
+        },
+        "access": {
+          "visibility": "restricted",
+          "policy": {
+            "id": "policy/eval-only",
+            "revision": "v1"
+          }
+        },
+        "data": {
+          "context": {
+            "ref": {
+              "id": "task/material-017",
+              "revision": "v2"
+            }
+          },
+          "content": {
+            "format": "application/json",
+            "inline": {
+              "phases": [
+                {
+                  "phase_id": "B",
+                  "fraction": 0.37
+                },
+                {
+                  "phase_id": "A",
+                  "fraction": 0.63
+                }
+              ],
+              "assumptions": [
+                "shared calibration offset"
+              ],
+              "interval_A": [
+                0.58,
+                0.68
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "trace-a2",
+      "kind": "asset",
+      "title": "执行轨迹 a2",
+      "revision": "v1",
+      "description": "只展示事件结构，未实际执行工具。",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "trajectory/a2",
+        "revision": "v1",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "kind": "trajectory",
+        "produced_by": {
+          "id": "activity/run-a2",
+          "revision": "done"
+        },
+        "access": {
+          "visibility": "restricted",
+          "policy": {
+            "id": "policy/eval-only",
+            "revision": "v1"
+          }
+        },
+        "data": {
+          "context": {
+            "ref": {
+              "id": "task/material-017",
+              "revision": "v2"
+            }
+          },
+          "format": "https://schema.example.invalid/demo/events-v1",
+          "events": {
+            "format": "application/json",
+            "inline": [
+              {
+                "event_id": "e1",
+                "type": "observation",
+                "content": "读取输入"
+              },
+              {
+                "event_id": "e2",
+                "parent_event_id": "e1",
+                "type": "action",
+                "tool": "terminal",
+                "content": "拟合并写出 answer.json"
+              },
+              {
+                "event_id": "e3",
+                "parent_event_id": "e2",
+                "type": "observation",
+                "content": "进程退出码 0"
+              }
+            ]
+          },
+          "termination": {
+            "kind": "terminated",
+            "reason": "agent_finished"
+          }
+        }
+      }
+    },
+    {
+      "id": "run-b1",
+      "kind": "activity",
+      "title": "模型 B 尝试 b1",
+      "revision": "done",
+      "description": "模型 B 尝试 b1",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "activity/run-b1",
+        "revision": "done",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "kind": "rollout",
+        "state": "completed",
+        "inputs": [
+          {
+            "role": "task",
+            "target": {
+              "ref": {
+                "id": "task/material-017",
+                "revision": "v2"
+              }
+            }
+          },
+          {
+            "role": "release",
+            "target": {
+              "ref": {
+                "id": "collection/materials-eval",
+                "revision": "r1"
+              }
+            }
+          }
+        ],
+        "participants": [
+          {
+            "actor": {
+              "id": "actor/service",
+              "revision": "v1"
+            },
+            "role": "runner"
+          }
+        ],
+        "time": {
+          "started_at": "2026-08-20T09:24:00.000Z",
+          "finished_at": "2026-08-20T09:25:00.000Z"
+        },
+        "method": {
+          "procedure": {
+            "id": "procedure/execute",
+            "revision": "v1"
+          },
+          "config": {
+            "temperature": 0.2,
+            "max_tool_steps": 80,
+            "seed": 17
+          },
+          "models": [
+            {
+              "role": "candidate",
+              "model": {
+                "id": "model/B",
+                "revision": "v1"
+              }
+            }
+          ],
+          "environments": [
+            {
+              "id": "environment/materials",
+              "revision": "v1"
+            }
+          ]
+        },
+        "diagnostics": {
+          "format": "application/json",
+          "inline": {
+            "completed": true,
+            "environment_observation": "synthetic demonstration only"
+          }
+        }
+      }
+    },
+    {
+      "id": "response-b1",
+      "kind": "asset",
+      "title": "候选结果 b1",
+      "revision": "v1",
+      "description": "两个结果相比例相同，仅相顺序不同。",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "response/b1",
+        "revision": "v1",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "kind": "response",
+        "produced_by": {
+          "id": "activity/run-b1",
+          "revision": "done"
+        },
+        "access": {
+          "visibility": "restricted",
+          "policy": {
+            "id": "policy/eval-only",
+            "revision": "v1"
+          }
+        },
+        "data": {
+          "context": {
+            "ref": {
+              "id": "task/material-017",
+              "revision": "v2"
+            }
+          },
+          "content": {
+            "format": "application/json",
+            "inline": {
+              "phases": [
+                {
+                  "phase_id": "A",
+                  "fraction": 0.63
+                },
+                {
+                  "phase_id": "B",
+                  "fraction": 0.37
+                }
+              ],
+              "assumptions": [
+                "shared calibration offset"
+              ],
+              "interval_A": [
+                0.58,
+                0.68
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "trace-b1",
+      "kind": "asset",
+      "title": "执行轨迹 b1",
+      "revision": "v1",
+      "description": "只展示事件结构，未实际执行工具。",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "trajectory/b1",
+        "revision": "v1",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "kind": "trajectory",
+        "produced_by": {
+          "id": "activity/run-b1",
+          "revision": "done"
+        },
+        "access": {
+          "visibility": "restricted",
+          "policy": {
+            "id": "policy/eval-only",
+            "revision": "v1"
+          }
+        },
+        "data": {
+          "context": {
+            "ref": {
+              "id": "task/material-017",
+              "revision": "v2"
+            }
+          },
+          "format": "https://schema.example.invalid/demo/events-v1",
+          "events": {
+            "format": "application/json",
+            "inline": [
+              {
+                "event_id": "e1",
+                "type": "observation",
+                "content": "读取输入"
+              },
+              {
+                "event_id": "e2",
+                "parent_event_id": "e1",
+                "type": "action",
+                "tool": "terminal",
+                "content": "拟合并写出 answer.json"
+              },
+              {
+                "event_id": "e3",
+                "parent_event_id": "e2",
+                "type": "observation",
+                "content": "进程退出码 0"
+              }
+            ]
+          },
+          "termination": {
+            "kind": "terminated",
+            "reason": "agent_finished"
+          }
+        }
+      }
+    },
+    {
+      "id": "score-activity-a1-v1",
+      "kind": "activity",
+      "title": "原 verifier 判分 a1",
+      "revision": "done",
+      "description": "原 verifier 判分 a1",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "activity/score-a1-v1",
+        "revision": "done",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "kind": "score",
+        "state": "completed",
+        "inputs": [
+          {
+            "role": "attempt",
+            "target": {
+              "ref": {
+                "id": "activity/run-a1",
+                "revision": "done"
+              }
+            }
+          },
+          {
+            "role": "task",
+            "target": {
+              "ref": {
+                "id": "task/material-017",
+                "revision": "v2"
+              }
+            }
+          },
+          {
+            "role": "evaluator",
+            "target": {
+              "ref": {
+                "id": "evaluator/materials",
+                "revision": "v1"
+              }
+            }
+          }
+        ],
+        "participants": [
+          {
+            "actor": {
+              "id": "actor/service",
+              "revision": "v1"
+            },
+            "role": "evaluator"
+          }
+        ],
+        "time": {
+          "started_at": "2026-08-20T09:26:00.000Z",
+          "finished_at": "2026-08-20T09:27:00.000Z"
+        },
+        "method": {
+          "procedure": {
+            "id": "procedure/verify",
+            "revision": "v1"
+          },
+          "config": {
+            "evaluator_revision": "v1"
+          },
+          "environments": [
+            {
+              "id": "environment/materials",
+              "revision": "v1"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "score-a1-v1",
+      "kind": "assessment",
+      "title": "a1：不可评分",
+      "revision": "v1",
+      "description": "a1：不可评分",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "assessment/score-a1-v1",
+        "revision": "v1",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "subjects": [
+          {
+            "ref": {
+              "id": "activity/run-a1",
+              "revision": "done"
+            }
+          }
+        ],
+        "criterion": {
+          "evaluator": {
+            "id": "evaluator/materials",
+            "revision": "v1"
+          },
+          "key": "task_pass"
+        },
+        "result": {
+          "status": "unavailable",
+          "reason": "infra_error_before_model_input"
+        },
+        "produced_by": {
+          "id": "activity/score-a1-v1",
+          "revision": "done"
+        },
+        "evidence": []
+      }
+    },
+    {
+      "id": "score-activity-a2-v1",
+      "kind": "activity",
+      "title": "原 verifier 判分 a2",
+      "revision": "done",
+      "description": "原 verifier 判分 a2",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "activity/score-a2-v1",
+        "revision": "done",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "kind": "score",
+        "state": "completed",
+        "inputs": [
+          {
+            "role": "response",
+            "target": {
+              "ref": {
+                "id": "response/a2",
+                "revision": "v1"
+              }
+            }
+          },
+          {
+            "role": "task",
+            "target": {
+              "ref": {
+                "id": "task/material-017",
+                "revision": "v2"
+              }
+            }
+          },
+          {
+            "role": "evaluator",
+            "target": {
+              "ref": {
+                "id": "evaluator/materials",
+                "revision": "v1"
+              }
+            }
+          }
+        ],
+        "participants": [
+          {
+            "actor": {
+              "id": "actor/service",
+              "revision": "v1"
+            },
+            "role": "evaluator"
+          }
+        ],
+        "time": {
+          "started_at": "2026-08-20T09:28:00.000Z",
+          "finished_at": "2026-08-20T09:29:00.000Z"
+        },
+        "method": {
+          "procedure": {
+            "id": "procedure/verify",
+            "revision": "v1"
+          },
+          "config": {
+            "evaluator_revision": "v1"
+          },
+          "environments": [
+            {
+              "id": "environment/materials",
+              "revision": "v1"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "score-a2-v1",
+      "kind": "assessment",
+      "title": "a2：原判分 未通过",
+      "revision": "v1",
+      "description": "a2：原判分 未通过",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "assessment/score-a2-v1",
+        "revision": "v1",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "subjects": [
+          {
+            "ref": {
+              "id": "response/a2",
+              "revision": "v1"
+            }
+          }
+        ],
+        "criterion": {
+          "evaluator": {
+            "id": "evaluator/materials",
+            "revision": "v1"
+          },
+          "key": "task_pass"
+        },
+        "result": {
+          "status": "value",
+          "value": false
+        },
+        "produced_by": {
+          "id": "activity/score-a2-v1",
+          "revision": "done"
+        },
+        "evidence": []
+      }
+    },
+    {
+      "id": "score-activity-b1-v1",
+      "kind": "activity",
+      "title": "原 verifier 判分 b1",
+      "revision": "done",
+      "description": "原 verifier 判分 b1",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "activity/score-b1-v1",
+        "revision": "done",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "kind": "score",
+        "state": "completed",
+        "inputs": [
+          {
+            "role": "response",
+            "target": {
+              "ref": {
+                "id": "response/b1",
+                "revision": "v1"
+              }
+            }
+          },
+          {
+            "role": "task",
+            "target": {
+              "ref": {
+                "id": "task/material-017",
+                "revision": "v2"
+              }
+            }
+          },
+          {
+            "role": "evaluator",
+            "target": {
+              "ref": {
+                "id": "evaluator/materials",
+                "revision": "v1"
+              }
+            }
+          }
+        ],
+        "participants": [
+          {
+            "actor": {
+              "id": "actor/service",
+              "revision": "v1"
+            },
+            "role": "evaluator"
+          }
+        ],
+        "time": {
+          "started_at": "2026-08-20T09:30:00.000Z",
+          "finished_at": "2026-08-20T09:31:00.000Z"
+        },
+        "method": {
+          "procedure": {
+            "id": "procedure/verify",
+            "revision": "v1"
+          },
+          "config": {
+            "evaluator_revision": "v1"
+          },
+          "environments": [
+            {
+              "id": "environment/materials",
+              "revision": "v1"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "score-b1-v1",
+      "kind": "assessment",
+      "title": "b1：原判分 通过",
+      "revision": "v1",
+      "description": "b1：原判分 通过",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "assessment/score-b1-v1",
+        "revision": "v1",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "subjects": [
+          {
+            "ref": {
+              "id": "response/b1",
+              "revision": "v1"
+            }
+          }
+        ],
+        "criterion": {
+          "evaluator": {
+            "id": "evaluator/materials",
+            "revision": "v1"
+          },
+          "key": "task_pass"
+        },
+        "result": {
+          "status": "value",
+          "value": true
+        },
+        "produced_by": {
+          "id": "activity/score-b1-v1",
+          "revision": "done"
+        },
+        "evidence": []
+      }
+    },
+    {
+      "id": "repair",
+      "kind": "activity",
+      "title": "修复 verifier 的相顺序缺陷",
+      "revision": "done",
+      "description": "修复 verifier 的相顺序缺陷",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "activity/repair",
+        "revision": "done",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "kind": "transform",
+        "state": "completed",
+        "inputs": [
+          {
+            "role": "evaluator",
+            "target": {
+              "ref": {
+                "id": "evaluator/materials",
+                "revision": "v1"
+              }
+            }
+          },
+          {
+            "role": "response",
+            "target": {
+              "ref": {
+                "id": "response/a2",
+                "revision": "v1"
+              }
+            }
+          },
+          {
+            "role": "response",
+            "target": {
+              "ref": {
+                "id": "response/b1",
+                "revision": "v1"
+              }
+            }
+          }
+        ],
+        "participants": [
+          {
+            "actor": {
+              "id": "actor/reviewer-b",
+              "revision": "v1"
+            },
+            "role": "verifier_maintainer"
+          }
+        ],
+        "time": {
+          "started_at": "2026-08-20T09:32:00.000Z",
+          "finished_at": "2026-08-20T09:33:00.000Z"
+        },
+        "method": {
+          "procedure": {
+            "id": "procedure/verify",
+            "revision": "v1"
+          },
+          "config": {
+            "fix": "compare_by_phase_id"
+          }
+        }
+      }
+    },
+    {
+      "id": "verifier-v2",
+      "kind": "asset",
+      "title": "隐藏 verifier v2",
+      "revision": "v2",
+      "description": "按 phase_id 对齐，接受等价的输出排列；旧版仍保留。",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "evaluator/materials",
+        "revision": "v2",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "kind": "evaluator",
+        "produced_by": {
+          "id": "activity/repair",
+          "revision": "done"
+        },
+        "access": {
+          "visibility": "restricted",
+          "policy": {
+            "id": "policy/eval-only",
+            "revision": "v1"
+          }
+        },
+        "data": {
+          "method": {
+            "id": "procedure/verify",
+            "revision": "v1"
+          },
+          "environment": {
+            "id": "environment/materials",
+            "revision": "v1"
+          },
+          "criteria": [
+            {
+              "key": "task_pass",
+              "description": "相同科学语义；修复不合理的排列约束",
+              "value_schema": "https://schema.example.invalid/demo/boolean-v1"
+            }
+          ],
+          "regression_cases": [
+            "合法重排通过",
+            "比例求和错误失败",
+            "未知 phase_id 失败",
+            "缺少误差假设失败"
+          ]
+        },
+        "parents": [
+          {
+            "id": "evaluator/materials",
+            "revision": "v1"
+          }
+        ]
+      }
+    },
+    {
+      "id": "rescore",
+      "kind": "activity",
+      "title": "仅重评分，复用原始响应",
+      "revision": "done",
+      "description": "仅重评分，复用原始响应",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "activity/rescore",
+        "revision": "done",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "kind": "score",
+        "state": "completed",
+        "inputs": [
+          {
+            "role": "task",
+            "target": {
+              "ref": {
+                "id": "task/material-017",
+                "revision": "v2"
+              }
+            }
+          },
+          {
+            "role": "response",
+            "target": {
+              "ref": {
+                "id": "response/a2",
+                "revision": "v1"
+              }
+            }
+          },
+          {
+            "role": "response",
+            "target": {
+              "ref": {
+                "id": "response/b1",
+                "revision": "v1"
+              }
+            }
+          },
+          {
+            "role": "evaluator",
+            "target": {
+              "ref": {
+                "id": "evaluator/materials",
+                "revision": "v2"
+              }
+            }
+          }
+        ],
+        "participants": [
+          {
+            "actor": {
+              "id": "actor/service",
+              "revision": "v1"
+            },
+            "role": "evaluator"
+          }
+        ],
+        "time": {
+          "started_at": "2026-08-20T09:34:00.000Z",
+          "finished_at": "2026-08-20T09:35:00.000Z"
+        },
+        "method": {
+          "procedure": {
+            "id": "procedure/rescore",
+            "revision": "v1"
+          },
+          "config": {
+            "rerun_model": false,
+            "replace_raw_response": false
+          },
+          "environments": [
+            {
+              "id": "environment/materials",
+              "revision": "v1"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "score-a2-v2",
+      "kind": "assessment",
+      "title": "a2：修复后通过",
+      "revision": "v1",
+      "description": "a2：修复后通过",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "assessment/score-a2-v2",
+        "revision": "v1",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "subjects": [
+          {
+            "ref": {
+              "id": "response/a2",
+              "revision": "v1"
+            }
+          }
+        ],
+        "criterion": {
+          "evaluator": {
+            "id": "evaluator/materials",
+            "revision": "v2"
+          },
+          "key": "task_pass"
+        },
+        "result": {
+          "status": "value",
+          "value": true
+        },
+        "produced_by": {
+          "id": "activity/rescore",
+          "revision": "done"
+        },
+        "evidence": [
+          {
+            "target": {
+              "ref": {
+                "id": "response/a2",
+                "revision": "v1"
+              }
+            }
+          }
+        ],
+        "supersedes": [
+          {
+            "id": "assessment/score-a2-v1",
+            "revision": "v1"
+          }
+        ]
+      }
+    },
+    {
+      "id": "score-b1-v2",
+      "kind": "assessment",
+      "title": "b1：修复后通过",
+      "revision": "v1",
+      "description": "b1：修复后通过",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "assessment/score-b1-v2",
+        "revision": "v1",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "subjects": [
+          {
+            "ref": {
+              "id": "response/b1",
+              "revision": "v1"
+            }
+          }
+        ],
+        "criterion": {
+          "evaluator": {
+            "id": "evaluator/materials",
+            "revision": "v2"
+          },
+          "key": "task_pass"
+        },
+        "result": {
+          "status": "value",
+          "value": true
+        },
+        "produced_by": {
+          "id": "activity/rescore",
+          "revision": "done"
+        },
+        "evidence": [
+          {
+            "target": {
+              "ref": {
+                "id": "response/b1",
+                "revision": "v1"
+              }
+            }
+          }
+        ],
+        "supersedes": [
+          {
+            "id": "assessment/score-b1-v1",
+            "revision": "v1"
+          }
+        ]
+      }
+    },
+    {
+      "id": "release-2",
+      "kind": "activity",
+      "title": "审查输入等价并发布修复版本",
+      "revision": "done",
+      "description": "审查输入等价并发布修复版本",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "activity/release-2",
+        "revision": "done",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "kind": "release",
+        "state": "completed",
+        "inputs": [
+          {
+            "role": "old_task",
+            "target": {
+              "ref": {
+                "id": "task/material-017",
+                "revision": "v2"
+              }
+            }
+          },
+          {
+            "role": "new_verifier",
+            "target": {
+              "ref": {
+                "id": "evaluator/materials",
+                "revision": "v2"
+              }
+            }
+          },
+          {
+            "role": "old_release",
+            "target": {
+              "ref": {
+                "id": "collection/materials-eval",
+                "revision": "r1"
+              }
+            }
+          },
+          {
+            "role": "prior_approval",
+            "target": {
+              "ref": {
+                "id": "assessment/decision-2",
+                "revision": "v1"
+              }
+            }
+          }
+        ],
+        "participants": [
+          {
+            "actor": {
+              "id": "actor/adjudicator",
+              "revision": "v1"
+            },
+            "role": "reviewer"
+          },
+          {
+            "actor": {
+              "id": "actor/service",
+              "revision": "v1"
+            },
+            "role": "publisher"
+          }
+        ],
+        "time": {
+          "started_at": "2026-08-20T09:36:00.000Z",
+          "finished_at": "2026-08-20T09:37:00.000Z"
+        },
+        "method": {
+          "procedure": {
+            "id": "procedure/rescore",
+            "revision": "v1"
+          },
+          "config": {
+            "compare_paths": [
+              "/data/input",
+              "/data/environment",
+              "/data/references"
+            ],
+            "reuse_scope": "历史响应可在新 verifier 下判分；不改写其 context。"
+          }
+        }
+      }
+    },
+    {
+      "id": "task-v3",
+      "kind": "asset",
+      "title": "评测题目 v3：仅更新 verifier 引用",
+      "revision": "v3",
+      "description": "题干、输入文件、环境和参考值保持不变。",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "task/material-017",
+        "revision": "v3",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "kind": "task",
+        "produced_by": {
+          "id": "activity/release-2",
+          "revision": "done"
+        },
+        "access": {
+          "visibility": "restricted",
+          "policy": {
+            "id": "policy/eval-only",
+            "revision": "v1"
+          }
+        },
+        "data": {
+          "profile": "https://schema.example.invalid/demo/materials-terminal-v1",
+          "input": {
+            "messages": [
+              {
+                "role": "user",
+                "content": {
+                  "format": "text/plain",
+                  "inline": "按给定的两相线性混合模型估计相比例；显式采用计数噪声与共享校准偏移，输出 phase_id 标识的比例、区间与假设。相的排列顺序不影响语义。"
+                }
+              }
+            ],
+            "files": [
+              {
+                "name": "/input/spectrum.png",
+                "artifact": {
+                  "id": "artifact/spectrum",
+                  "revision": "v1"
+                }
+              },
+              {
+                "name": "/input/counts.csv",
+                "artifact": {
+                  "id": "artifact/counts",
+                  "revision": "v1"
+                }
+              },
+              {
+                "name": "/input/method.txt",
+                "artifact": {
+                  "id": "artifact/method-note",
+                  "revision": "v1"
+                }
+              }
+            ]
+          },
+          "references": [
+            {
+              "key": "answer",
+              "role": "answer",
+              "audience": "evaluator",
+              "value": {
+                "format": "application/json",
+                "inline": {
+                  "phase_A": 0.63,
+                  "phase_B": 0.37,
+                  "illustrative_interval_A": [
+                    0.58,
+                    0.68
+                  ]
+                }
+              }
+            },
+            {
+              "key": "rationale",
+              "role": "rationale",
+              "audience": "curator",
+              "value": {
+                "format": "text/plain",
+                "inline": "说明校准偏移作为共享 nuisance variable 的处理及区间计算约定；这些数值仅用于示意。"
+              }
+            }
+          ],
+          "environment": {
+            "id": "environment/materials",
+            "revision": "v1"
+          },
+          "evaluation": {
+            "id": "evaluator/materials",
+            "revision": "v2"
+          },
+          "attributes": {
+            "domain": "materials-science",
+            "tags": [
+              "synthetic",
+              "multimodal",
+              "terminal",
+              "uncertainty"
+            ]
+          },
+          "lineage_key": "eval-materials-family-017"
+        },
+        "parents": [
+          {
+            "id": "task/material-017",
+            "revision": "v2"
+          }
+        ]
+      }
+    },
+    {
+      "id": "equivalence",
+      "kind": "assessment",
+      "title": "v2 / v3 输入等价审查",
+      "revision": "v1",
+      "description": "v2 / v3 输入等价审查",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "assessment/input-equivalence",
+        "revision": "v1",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "subjects": [
+          {
+            "ref": {
+              "id": "task/material-017",
+              "revision": "v2"
+            }
+          },
+          {
+            "ref": {
+              "id": "task/material-017",
+              "revision": "v3"
+            }
+          }
+        ],
+        "criterion": {
+          "evaluator": {
+            "id": "evaluator/review",
+            "revision": "v1"
+          },
+          "key": "input_equivalence"
+        },
+        "result": {
+          "status": "value",
+          "value": true
+        },
+        "produced_by": {
+          "id": "activity/release-2",
+          "revision": "done"
+        },
+        "evidence": [],
+        "rationale": {
+          "format": "text/plain",
+          "inline": "示例中比对指定路径相等。历史 response.context 仍然是 v2；如题干或初始状态改变则不可使用此复用规则。"
+        }
+      }
+    },
+    {
+      "id": "release-2-approval",
+      "kind": "assessment",
+      "title": "v3 的显式发布资格判断",
+      "revision": "v1",
+      "description": "v3 的显式发布资格判断",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "assessment/release-2-approval",
+        "revision": "v1",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "subjects": [
+          {
+            "ref": {
+              "id": "task/material-017",
+              "revision": "v3"
+            }
+          }
+        ],
+        "criterion": {
+          "evaluator": {
+            "id": "evaluator/review",
+            "revision": "v1"
+          },
+          "key": "review_decision"
+        },
+        "result": {
+          "status": "value",
+          "value": "accept"
+        },
+        "produced_by": {
+          "id": "activity/release-2",
+          "revision": "done"
+        },
+        "evidence": [
+          {
+            "target": {
+              "ref": {
+                "id": "assessment/input-equivalence",
+                "revision": "v1"
+              }
+            }
+          },
+          {
+            "target": {
+              "ref": {
+                "id": "assessment/decision-2",
+                "revision": "v1"
+              }
+            }
+          }
+        ],
+        "rationale": {
+          "format": "text/plain",
+          "inline": "明确复核旧审查适用的题干、参考内容及环境未变，并审查 verifier 修复；这是 v3 的新判断，不是把 v2 的审核引用自动迁移。"
+        }
+      }
+    },
+    {
+      "id": "eval-release-2",
+      "kind": "collection",
+      "title": "评测发布 r2",
+      "revision": "r2",
+      "description": "新冻结版本与旧 r1 并存；修复后的结果必须标注评分协议。",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "collection/materials-eval",
+        "revision": "r2",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "parents": [
+          {
+            "id": "collection/materials-eval",
+            "revision": "r1"
+          }
+        ],
+        "name": "Synthetic Materials Eval — repaired verifier",
+        "purpose": "eval",
+        "members": [
+          {
+            "key": "M017",
+            "target": {
+              "id": "task/material-017",
+              "revision": "v3"
+            },
+            "split": "test"
+          }
+        ],
+        "produced_by": {
+          "id": "activity/release-2",
+          "revision": "done"
+        },
+        "protocol": {
+          "id": "procedure/rescore",
+          "revision": "v1"
+        },
+        "policy": {
+          "id": "policy/eval-only",
+          "revision": "v1"
+        },
+        "release_evidence": [
+          {
+            "id": "assessment/input-equivalence",
+            "revision": "v1"
+          },
+          {
+            "id": "assessment/release-2-approval",
+            "revision": "v1"
+          }
+        ]
+      }
+    },
+    {
+      "id": "eligibility",
+      "kind": "activity",
+      "title": "拒绝将评测族导出训练",
+      "revision": "done",
+      "description": "拒绝将评测族导出训练",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "activity/eligibility",
+        "revision": "done",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "kind": "review",
+        "state": "completed",
+        "inputs": [
+          {
+            "role": "eval_release",
+            "target": {
+              "ref": {
+                "id": "collection/materials-eval",
+                "revision": "r2"
+              }
+            }
+          },
+          {
+            "role": "trajectory",
+            "target": {
+              "ref": {
+                "id": "trajectory/a2",
+                "revision": "v1"
+              }
+            }
+          },
+          {
+            "role": "policy",
+            "target": {
+              "ref": {
+                "id": "policy/eval-only",
+                "revision": "v1"
+              }
+            }
+          }
+        ],
+        "participants": [
+          {
+            "actor": {
+              "id": "actor/service",
+              "revision": "v1"
+            },
+            "role": "policy_enforcer"
+          }
+        ],
+        "time": {
+          "started_at": "2026-08-20T09:38:00.000Z",
+          "finished_at": "2026-08-20T09:39:00.000Z"
+        },
+        "method": {
+          "procedure": {
+            "id": "procedure/eligibility",
+            "revision": "v1"
+          },
+          "config": {
+            "propagate_restrictions": true
+          }
+        }
+      }
+    },
+    {
+      "id": "train-block",
+      "kind": "assessment",
+      "title": "评测任务及其轨迹：禁止训练",
+      "revision": "v1",
+      "description": "评测任务及其轨迹：禁止训练",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "assessment/train-block",
+        "revision": "v1",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "subjects": [
+          {
+            "ref": {
+              "id": "task/material-017",
+              "revision": "v3"
+            }
+          },
+          {
+            "ref": {
+              "id": "trajectory/a2",
+              "revision": "v1"
+            }
+          }
+        ],
+        "criterion": {
+          "evaluator": {
+            "id": "evaluator/policy",
+            "revision": "v1"
+          },
+          "key": "training_eligibility"
+        },
+        "result": {
+          "status": "value",
+          "value": "blocked"
+        },
+        "produced_by": {
+          "id": "activity/eligibility",
+          "revision": "done"
+        },
+        "evidence": [],
+        "rationale": {
+          "format": "text/plain",
+          "inline": "评测来源的用途规则禁止训练；改名、换 split、改写提示词均不能解除来源约束。"
+        }
+      }
+    },
+    {
+      "id": "generate-train",
+      "kind": "activity",
+      "title": "生成独立训练 sibling",
+      "revision": "done",
+      "description": "生成独立训练 sibling",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "activity/generate-train",
+        "revision": "done",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "kind": "author",
+        "state": "completed",
+        "inputs": [
+          {
+            "role": "generator",
+            "target": {
+              "ref": {
+                "id": "procedure/generate",
+                "revision": "v1"
+              }
+            }
+          },
+          {
+            "role": "policy",
+            "target": {
+              "ref": {
+                "id": "policy/training",
+                "revision": "v1"
+              }
+            }
+          }
+        ],
+        "participants": [
+          {
+            "actor": {
+              "id": "actor/author",
+              "revision": "v1"
+            },
+            "role": "author"
+          },
+          {
+            "actor": {
+              "id": "actor/service",
+              "revision": "v1"
+            },
+            "role": "generator"
+          }
+        ],
+        "time": {
+          "started_at": "2026-08-20T09:40:00.000Z",
+          "finished_at": "2026-08-20T09:41:00.000Z"
+        },
+        "method": {
+          "procedure": {
+            "id": "procedure/generate",
+            "revision": "v1"
+          },
+          "config": {
+            "independent_parameters": {
+              "mixture": [
+                0.28,
+                0.72
+              ],
+              "calibration_offset": 0.015,
+              "seed": 9131
+            },
+            "source_family": "train-materials-family-204",
+            "receives_eval_answers": false
+          }
+        }
+      }
+    },
+    {
+      "id": "training-task",
+      "kind": "asset",
+      "title": "独立训练题 T204",
+      "revision": "v1",
+      "description": "共享能力类别，使用独立合成输入与独立来源族；没有引用评测题内容。",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "task/train-204",
+        "revision": "v1",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "kind": "task",
+        "produced_by": {
+          "id": "activity/generate-train",
+          "revision": "done"
+        },
+        "access": {
+          "visibility": "restricted",
+          "policy": {
+            "id": "policy/training",
+            "revision": "v1"
+          }
+        },
+        "data": {
+          "profile": "https://schema.example.invalid/demo/materials-terminal-v1",
+          "input": {
+            "messages": [
+              {
+                "role": "user",
+                "content": {
+                  "format": "text/plain",
+                  "inline": "分析独立合成批次 T204；两相混合、独立生成参数和计数，输出比例与模型假设。"
+                }
+              }
+            ]
+          },
+          "references": [
+            {
+              "key": "answer",
+              "role": "answer",
+              "audience": "curator",
+              "value": {
+                "format": "application/json",
+                "inline": {
+                  "phase_A": 0.28,
+                  "phase_B": 0.72
+                }
+              }
+            }
+          ],
+          "environment": {
+            "id": "environment/materials",
+            "revision": "v1"
+          },
+          "lineage_key": "train-materials-family-204"
+        }
+      }
+    },
+    {
+      "id": "train-review",
+      "kind": "activity",
+      "title": "审查独立来源与候选",
+      "revision": "done",
+      "description": "审查独立来源与候选",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "activity/train-review",
+        "revision": "done",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "kind": "review",
+        "state": "completed",
+        "inputs": [
+          {
+            "role": "task",
+            "target": {
+              "ref": {
+                "id": "task/train-204",
+                "revision": "v1"
+              }
+            }
+          },
+          {
+            "role": "policy",
+            "target": {
+              "ref": {
+                "id": "policy/training",
+                "revision": "v1"
+              }
+            }
+          },
+          {
+            "role": "eval_members",
+            "target": {
+              "ref": {
+                "id": "collection/materials-eval",
+                "revision": "r2"
+              }
+            }
+          }
+        ],
+        "participants": [
+          {
+            "actor": {
+              "id": "actor/reviewer-a",
+              "revision": "v1"
+            },
+            "role": "reviewer"
+          }
+        ],
+        "time": {
+          "started_at": "2026-08-20T09:42:00.000Z",
+          "finished_at": "2026-08-20T09:43:00.000Z"
+        },
+        "method": {
+          "procedure": {
+            "id": "procedure/eligibility",
+            "revision": "v1"
+          },
+          "config": {
+            "checks": [
+              "source authorization",
+              "separate lineage",
+              "near duplicate screen",
+              "evaluation exposure audit"
+            ],
+            "demonstration_results": "all accepted; synthetic scenario only"
+          }
+        }
+      }
+    },
+    {
+      "id": "train-allow",
+      "kind": "assessment",
+      "title": "T204：训练导出资格通过",
+      "revision": "v1",
+      "description": "T204：训练导出资格通过",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "assessment/train-allow",
+        "revision": "v1",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "subjects": [
+          {
+            "ref": {
+              "id": "task/train-204",
+              "revision": "v1"
+            }
+          }
+        ],
+        "criterion": {
+          "evaluator": {
+            "id": "evaluator/policy",
+            "revision": "v1"
+          },
+          "key": "training_eligibility"
+        },
+        "result": {
+          "status": "value",
+          "value": "allowed"
+        },
+        "produced_by": {
+          "id": "activity/train-review",
+          "revision": "done"
+        },
+        "evidence": [],
+        "rationale": {
+          "format": "text/plain",
+          "inline": "合成案例设定审查通过。实际应用需要具体检测证据；不同 seed 或不同 lineage_key 本身不能证明无污染。"
+        }
+      }
+    },
+    {
+      "id": "train-rollout",
+      "kind": "activity",
+      "title": "生成训练题的两个候选",
+      "revision": "done",
+      "description": "生成训练题的两个候选",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "activity/train-rollout",
+        "revision": "done",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "kind": "rollout",
+        "state": "completed",
+        "inputs": [
+          {
+            "role": "task",
+            "target": {
+              "ref": {
+                "id": "task/train-204",
+                "revision": "v1"
+              }
+            }
+          }
+        ],
+        "participants": [
+          {
+            "actor": {
+              "id": "actor/service",
+              "revision": "v1"
+            },
+            "role": "runner"
+          }
+        ],
+        "time": {
+          "started_at": "2026-08-20T09:44:00.000Z",
+          "finished_at": "2026-08-20T09:45:00.000Z"
+        },
+        "method": {
+          "procedure": {
+            "id": "procedure/execute",
+            "revision": "v1"
+          },
+          "config": {
+            "candidates": 2
+          },
+          "models": [
+            {
+              "role": "candidate",
+              "model": {
+                "id": "model/A",
+                "revision": "v1"
+              }
+            }
+          ],
+          "environments": [
+            {
+              "id": "environment/materials",
+              "revision": "v1"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "train-good",
+      "kind": "asset",
+      "title": "T204 候选：good",
+      "revision": "v1",
+      "description": "两个候选共享同一具体上下文。",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "response/train-good",
+        "revision": "v1",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "kind": "response",
+        "produced_by": {
+          "id": "activity/train-rollout",
+          "revision": "done"
+        },
+        "access": {
+          "visibility": "restricted",
+          "policy": {
+            "id": "policy/training",
+            "revision": "v1"
+          }
+        },
+        "data": {
+          "context": {
+            "ref": {
+              "id": "task/train-204",
+              "revision": "v1"
+            }
+          },
+          "content": {
+            "format": "text/plain",
+            "inline": "phase_A=0.28；phase_B=0.72。说明共享校准误差和归一化步骤。"
+          }
+        }
+      }
+    },
+    {
+      "id": "train-bad",
+      "kind": "asset",
+      "title": "T204 候选：bad",
+      "revision": "v1",
+      "description": "两个候选共享同一具体上下文。",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "response/train-bad",
+        "revision": "v1",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "kind": "response",
+        "produced_by": {
+          "id": "activity/train-rollout",
+          "revision": "done"
+        },
+        "access": {
+          "visibility": "restricted",
+          "policy": {
+            "id": "policy/training",
+            "revision": "v1"
+          }
+        },
+        "data": {
+          "context": {
+            "ref": {
+              "id": "task/train-204",
+              "revision": "v1"
+            }
+          },
+          "content": {
+            "format": "text/plain",
+            "inline": "phase_A=0.28；phase_B=0.82。两相比例之和为 1.10。"
+          }
+        }
+      }
+    },
+    {
+      "id": "compare",
+      "kind": "activity",
+      "title": "人工判定正确性与偏好",
+      "revision": "done",
+      "description": "人工判定正确性与偏好",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "activity/compare",
+        "revision": "done",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "kind": "annotate",
+        "state": "completed",
+        "inputs": [
+          {
+            "role": "task",
+            "target": {
+              "ref": {
+                "id": "task/train-204",
+                "revision": "v1"
+              }
+            }
+          },
+          {
+            "role": "candidate",
+            "target": {
+              "ref": {
+                "id": "response/train-good",
+                "revision": "v1"
+              }
+            }
+          },
+          {
+            "role": "candidate",
+            "target": {
+              "ref": {
+                "id": "response/train-bad",
+                "revision": "v1"
+              }
+            }
+          },
+          {
+            "role": "rubric",
+            "target": {
+              "ref": {
+                "id": "evaluator/preference",
+                "revision": "v1"
+              }
+            }
+          }
+        ],
+        "participants": [
+          {
+            "actor": {
+              "id": "actor/expert",
+              "revision": "v1"
+            },
+            "role": "annotator"
+          }
+        ],
+        "time": {
+          "started_at": "2026-08-20T09:46:00.000Z",
+          "finished_at": "2026-08-20T09:47:00.000Z"
+        },
+        "method": {
+          "procedure": {
+            "id": "procedure/review",
+            "revision": "v1"
+          },
+          "config": {
+            "preference_rule": "先比较物理约束与正确性，再比较解释完整度"
+          }
+        }
+      }
+    },
+    {
+      "id": "train-correct",
+      "kind": "assessment",
+      "title": "good 候选的独立正确性判断",
+      "revision": "v1",
+      "description": "good 候选的独立正确性判断",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "assessment/train-correct",
+        "revision": "v1",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "subjects": [
+          {
+            "ref": {
+              "id": "task/train-204",
+              "revision": "v1"
+            }
+          },
+          {
+            "ref": {
+              "id": "response/train-good",
+              "revision": "v1"
+            }
+          }
+        ],
+        "criterion": {
+          "evaluator": {
+            "id": "evaluator/preference",
+            "revision": "v1"
+          },
+          "key": "answer_correctness"
+        },
+        "result": {
+          "status": "value",
+          "value": true
+        },
+        "produced_by": {
+          "id": "activity/compare",
+          "revision": "done"
+        },
+        "evidence": []
+      }
+    },
+    {
+      "id": "preference",
+      "kind": "assessment",
+      "title": "T204 偏好：good 优于 bad",
+      "revision": "v1",
+      "description": "T204 偏好：good 优于 bad",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "assessment/preference",
+        "revision": "v1",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "subjects": [
+          {
+            "ref": {
+              "id": "task/train-204",
+              "revision": "v1"
+            }
+          },
+          {
+            "ref": {
+              "id": "response/train-good",
+              "revision": "v1"
+            }
+          },
+          {
+            "ref": {
+              "id": "response/train-bad",
+              "revision": "v1"
+            }
+          }
+        ],
+        "criterion": {
+          "evaluator": {
+            "id": "evaluator/preference",
+            "revision": "v1"
+          },
+          "key": "preference"
+        },
+        "result": {
+          "status": "value",
+          "value": {
+            "winner": {
+              "id": "response/train-good",
+              "revision": "v1"
+            }
+          }
+        },
+        "produced_by": {
+          "id": "activity/compare",
+          "revision": "done"
+        },
+        "evidence": [
+          {
+            "target": {
+              "ref": {
+                "id": "assessment/train-correct",
+                "revision": "v1"
+              }
+            }
+          }
+        ],
+        "rationale": {
+          "format": "text/plain",
+          "inline": "被拒候选违反归一化条件。chosen 的正确性来自单独判断，不从偏好标签推断。"
+        }
+      }
+    },
+    {
+      "id": "export",
+      "kind": "activity",
+      "title": "导出 SFT 与 DPO 视图",
+      "revision": "done",
+      "description": "导出 SFT 与 DPO 视图",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "activity/export",
+        "revision": "done",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "kind": "export",
+        "state": "completed",
+        "inputs": [
+          {
+            "role": "task",
+            "target": {
+              "ref": {
+                "id": "task/train-204",
+                "revision": "v1"
+              }
+            }
+          },
+          {
+            "role": "eligibility",
+            "target": {
+              "ref": {
+                "id": "assessment/train-allow",
+                "revision": "v1"
+              }
+            }
+          },
+          {
+            "role": "correctness",
+            "target": {
+              "ref": {
+                "id": "assessment/train-correct",
+                "revision": "v1"
+              }
+            }
+          },
+          {
+            "role": "preference",
+            "target": {
+              "ref": {
+                "id": "assessment/preference",
+                "revision": "v1"
+              }
+            }
+          },
+          {
+            "role": "chosen",
+            "target": {
+              "ref": {
+                "id": "response/train-good",
+                "revision": "v1"
+              }
+            }
+          },
+          {
+            "role": "rejected",
+            "target": {
+              "ref": {
+                "id": "response/train-bad",
+                "revision": "v1"
+              }
+            }
+          }
+        ],
+        "participants": [
+          {
+            "actor": {
+              "id": "actor/service",
+              "revision": "v1"
+            },
+            "role": "exporter"
+          }
+        ],
+        "time": {
+          "started_at": "2026-08-20T09:48:00.000Z",
+          "finished_at": "2026-08-20T09:49:00.000Z"
+        },
+        "method": {
+          "procedure": {
+            "id": "procedure/export",
+            "revision": "v1"
+          },
+          "config": {
+            "sft_loss": "completion_only",
+            "dpo_context": "identical",
+            "include_hidden_eval_materials": false,
+            "tokenizer": "illustrative-tokenizer-contract-v1"
+          }
+        }
+      }
+    },
+    {
+      "id": "sft",
+      "kind": "asset",
+      "title": "T204 的 SFT 样本",
+      "revision": "v1",
+      "description": "训练格式是可重建投影，保留源与选择依据。",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "training/sft-204",
+        "revision": "v1",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "kind": "training_example",
+        "produced_by": {
+          "id": "activity/export",
+          "revision": "done"
+        },
+        "access": {
+          "visibility": "restricted",
+          "policy": {
+            "id": "policy/training",
+            "revision": "v1"
+          }
+        },
+        "data": {
+          "format": "https://schema.example.invalid/demo/sft-v1",
+          "record": {
+            "format": "application/json",
+            "inline": {
+              "prompt": "T204 input",
+              "completion": "0.28 / 0.72 + explanation",
+              "loss_mask": "completion_only"
+            }
+          },
+          "sources": [
+            {
+              "ref": {
+                "id": "task/train-204",
+                "revision": "v1"
+              }
+            },
+            {
+              "ref": {
+                "id": "response/train-good",
+                "revision": "v1"
+              }
+            }
+          ],
+          "selection_evidence": [
+            {
+              "id": "assessment/train-allow",
+              "revision": "v1"
+            },
+            {
+              "id": "assessment/train-correct",
+              "revision": "v1"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "dpo",
+      "kind": "asset",
+      "title": "T204 的 DPO 样本",
+      "revision": "v1",
+      "description": "共同上下文、原始两个候选和偏好判断均保留。",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "training/dpo-204",
+        "revision": "v1",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "kind": "training_example",
+        "produced_by": {
+          "id": "activity/export",
+          "revision": "done"
+        },
+        "access": {
+          "visibility": "restricted",
+          "policy": {
+            "id": "policy/training",
+            "revision": "v1"
+          }
+        },
+        "data": {
+          "format": "https://schema.example.invalid/demo/dpo-v1",
+          "record": {
+            "format": "application/json",
+            "inline": {
+              "prompt": "T204 input",
+              "chosen": "0.28 / 0.72 + explanation",
+              "rejected": "0.28 / 0.82"
+            }
+          },
+          "sources": [
+            {
+              "ref": {
+                "id": "task/train-204",
+                "revision": "v1"
+              }
+            },
+            {
+              "ref": {
+                "id": "response/train-good",
+                "revision": "v1"
+              }
+            },
+            {
+              "ref": {
+                "id": "response/train-bad",
+                "revision": "v1"
+              }
+            }
+          ],
+          "selection_evidence": [
+            {
+              "id": "assessment/train-allow",
+              "revision": "v1"
+            },
+            {
+              "id": "assessment/preference",
+              "revision": "v1"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "train-release",
+      "kind": "collection",
+      "title": "训练发布 r1",
+      "revision": "r1",
+      "description": "两种派生训练视图纳入版本化集合；没有 eval 族成员。",
+      "data": {
+        "schema": "https://schema.example.invalid/demo/compact-v1",
+        "id": "collection/materials-train",
+        "revision": "r1",
+        "recorded_at": "2026-08-20T12:00:00Z",
+        "name": "Synthetic Materials Training Views",
+        "purpose": "train",
+        "members": [
+          {
+            "key": "T204-sft",
+            "target": {
+              "id": "training/sft-204",
+              "revision": "v1"
+            },
+            "split": "train"
+          },
+          {
+            "key": "T204-dpo",
+            "target": {
+              "id": "training/dpo-204",
+              "revision": "v1"
+            },
+            "split": "train"
+          }
+        ],
+        "produced_by": {
+          "id": "activity/export",
+          "revision": "done"
+        },
+        "protocol": {
+          "id": "procedure/export",
+          "revision": "v1"
+        },
+        "policy": {
+          "id": "policy/training",
+          "revision": "v1"
+        },
+        "release_evidence": [
+          {
+            "id": "assessment/train-allow",
+            "revision": "v1"
+          }
+        ]
+      }
+    }
+  ]
+}
