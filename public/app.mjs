@@ -124,7 +124,7 @@ function renderGraph(links) {
     if (!record) throw new Error(`Unresolved case graph record: ${id}`);
     return `<g class="graph-node ${record.kind}" data-record="${escape(id)}" tabindex="0" role="button" aria-label="查看记录：${escape(record.title)}" transform="translate(${position.x},${position.y})"><title>${escape(record.title)} · ${escape(record.data.id)}@${escape(record.revision)}</title><rect width="199" height="78" rx="6"/><text x="13" y="20" class="node-type">${escape(record.kind.toUpperCase())} / ${escape(record.revision)}</text><text x="13" y="41" class="node-title">${escape(short(record.title,14))}</text><text x="13" y="62" class="node-id">${escape(short(record.data.id,29))}</text></g>`;
   }).join('');
-  $('#case-graph').innerHTML = `<svg class="graph-svg" style="min-width:${Math.min(width,850)}px" viewBox="0 0 ${width} ${height}" role="group" aria-label="当前阶段的记录关系图，可点选节点"><defs><marker id="case-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 1 1 L 7 4 L 1 7" fill="none" stroke="#9aa699" stroke-width="1.3"/></marker></defs>${paths}${nodes}</svg>`;
+  $('#case-graph').innerHTML = `<svg class="graph-svg" style="min-width:${Math.min(width,850)}px" viewBox="0 0 ${width} ${height}" role="group" aria-label="当前阶段的记录关系图，可点选节点"><defs><marker id="case-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 1 1 L 7 4 L 1 7" fill="none" stroke="#9aa9bb" stroke-width="1.3"/></marker></defs>${paths}${nodes}</svg>`;
 }
 
 function renderStage({scrollStep=false}={}) {
